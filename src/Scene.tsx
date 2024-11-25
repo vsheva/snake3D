@@ -5,25 +5,27 @@ import { Perf } from 'r3f-perf'
 import { useRef } from 'react'
 import { BoxGeometry, Mesh, MeshBasicMaterial } from 'three'
 import { Cube } from './components/Cube'
-import { Plane } from './components/Plane'
+import { Field } from './components/Field'
+import { Sky } from '@react-three/drei'
+import { fieldCONFIG } from './config/fieldConfig'
 import { Sphere } from './components/Sphere'
-
+import Snake from './components/Snake'
 function Scene() {
   const { performance } = useControls('Monitoring', {
     performance: false,
   })
 
-  const { animate } = useControls('Cube', {
-    animate: true,
-  })
+  // const { animate } = useControls('Cube', {
+  //   animate: true,
+  // })
 
-  const cubeRef = useRef<Mesh<BoxGeometry, MeshBasicMaterial>>(null)
+  // const cubeRef = useRef<Mesh<BoxGeometry, MeshBasicMaterial>>(null)
 
-  useFrame((_, delta) => {
-    if (animate) {
-      cubeRef.current!.rotation.y += delta / 3
-    }
-  })
+  // useFrame((_, delta) => {
+  //   if (animate) {
+  //     cubeRef.current!.rotation.y += delta / 3
+  //   }
+  // })
 
   return (
     <>
@@ -39,9 +41,11 @@ function Scene() {
       />
       <ambientLight intensity={0.2} />
 
-      <Cube ref={cubeRef} />
-      <Sphere />
-      <Plane />
+      {/* <Cube ref={cubeRef} /> */}
+      {/* <Sphere /> */}
+      <Snake />
+      <Sky sunPosition={[-2, 2, 3]} />
+      <Field size={fieldCONFIG.fieldSIZE} />
     </>
   )
 }

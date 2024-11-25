@@ -33,7 +33,9 @@ function Main() {
           fov: 55,
           near: 0.1,
           far: 200,
-          position: [3, 2, 9],
+          aspect: window.innerWidth / window.innerHeight,
+          position: [0, -25, 25],
+          rotation: [0.8, 0, 0],
         }}
         shadows
       >
