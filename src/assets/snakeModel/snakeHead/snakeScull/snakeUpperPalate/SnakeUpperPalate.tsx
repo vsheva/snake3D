@@ -3,7 +3,7 @@ import SnakeUpperPalateGeometry from './SnakeUpperPalateGeometry'
 
 function SnakeUpperPalate() {
   return (
-    <mesh>
+    <mesh castShadow>
       <SnakeUpperPalateGeometry />
       <meshStandardMaterial
         color={snakeCONFIG.snakeMOUTH.upperPalate.color}

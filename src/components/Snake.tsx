@@ -10,7 +10,7 @@ const Snake /*: React.FC<SnakeProps>*/ = () => {
   let positionY = 0
   useFrame((_, delta) => {
     if (groupRef.current) {
-      const speed = 0.5
+      const speed = 0
       positionY = positionY + speed * delta
       groupRef.current.position.set(0, positionY, 0)
     }

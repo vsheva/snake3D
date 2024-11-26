@@ -3,7 +3,7 @@ import SnakeNoseBridgeGeometry from './SnakeNoseBridgeGeometry'
 
 function SnakeNoseBridge() {
   return (
-    <mesh>
+    <mesh castShadow>
       <SnakeNoseBridgeGeometry />
       <meshStandardMaterial
         color={snakeCONFIG.snakeFirstCOLOR}

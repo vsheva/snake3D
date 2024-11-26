@@ -10,6 +10,7 @@ import { Sky } from '@react-three/drei'
 import { fieldCONFIG } from './config/fieldConfig'
 import { Sphere } from './components/Sphere'
 import Snake from './components/Snake'
+import Apple from './components/Apple'
 function Scene() {
   const { performance } = useControls('Monitoring', {
     performance: false,
@@ -41,9 +42,10 @@ function Scene() {
       />
       <ambientLight intensity={0.2} />
 
-      {/* <Cube ref={cubeRef} /> */}
+      {/* <Cube /> */}
       {/* <Sphere /> */}
       <Snake />
+      <Apple />
       <Sky sunPosition={[-2, 2, 3]} />
       <Field size={fieldCONFIG.fieldSIZE} />
     </>

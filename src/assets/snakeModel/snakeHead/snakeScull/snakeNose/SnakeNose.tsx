@@ -2,7 +2,7 @@ import SnakeNoseGeometry from './SnakeNoseGeometry'
 import { snakeCONFIG } from '../../../../../config/snakeConfig'
 function SnakeNose() {
   return (
-    <mesh>
+    <mesh castShadow>
       <SnakeNoseGeometry />
       <meshStandardMaterial
         color={snakeCONFIG.snakeFirstCOLOR}
