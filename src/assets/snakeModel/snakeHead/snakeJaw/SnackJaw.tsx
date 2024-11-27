@@ -2,9 +2,9 @@
 import { snakeCONFIG } from '../../../../config/snakeConfig'
 import { GeometryProps } from '../../../../types/threeTypes'
 import SnakeJawGeometry from './SnakeJawGeometry'
-function SnakeJaw(/*props: GeometryProps*/) {
+function SnakeJaw(props: GeometryProps) {
   return (
-    <mesh /*{...props}*/>
+    <mesh {...props} receiveShadow castShadow>
       <SnakeJawGeometry />
       <meshStandardMaterial
         color={snakeCONFIG.snakeSecondCOLOR}

@@ -3,7 +3,7 @@ import SnakeUpperLipGeometry from './SnakeUpperLipGeometry'
 
 function SnakeUpperLip() {
   return (
-    <mesh castShadow>
+    <mesh receiveShadow castShadow>
       <SnakeUpperLipGeometry />
       <meshStandardMaterial
         color={snakeCONFIG.snakeFirstCOLOR}

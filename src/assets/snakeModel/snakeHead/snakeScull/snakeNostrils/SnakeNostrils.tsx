@@ -3,7 +3,7 @@ import SnakeNostrilsGeometry from './SnakeNostrilsGeometry'
 
 function SnakeNostrils() {
   return (
-    <mesh castShadow>
+    <mesh receiveShadow castShadow>
       <SnakeNostrilsGeometry />
       <meshStandardMaterial
         color={snakeCONFIG.snakeSecondCOLOR}

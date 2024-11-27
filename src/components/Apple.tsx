@@ -12,7 +12,7 @@ const Apple: React.FC = () => {
     })
   }, [scene])
 
-  return <primitive object={scene} position={[0, 5, 0.8]} scale={0.4} />
+  return <primitive object={scene} position={[-1, 3, 0.5]} scale={0.3} />
 }
 
 export default Apple

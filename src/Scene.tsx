@@ -15,6 +15,12 @@ function Scene() {
   const { performance } = useControls('Monitoring', {
     performance: false,
   })
+  // const { positionX, positionY, rotationZ } =
+  //   useControls('Snake', {
+  //     positionX: 0,
+  //     positionY: 0.35,
+  //     rotationZ
+  //   })
 
   // const { animate } = useControls('Cube', {
   //   animate: true,
