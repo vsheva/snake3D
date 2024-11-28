@@ -1,3 +1,4 @@
+import * as THREE from 'three'
 import * as VERT from '../snakeScullVertices'
 
 function SnakeHeadBackGeometry() {
@@ -5,6 +6,7 @@ function SnakeHeadBackGeometry() {
   const headBackFaceQAZ = VERT.verticesQ.concat(VERT.verticesA, VERT.verticesZ)
   const allHeadBackFaces = headBackFaceABZ.concat(headBackFaceQAZ)
   const headBackVertices = new Float32Array(allHeadBackFaces)
+
   return (
     <bufferGeometry onUpdate={(self) => self.computeVertexNormals()}>
       <bufferAttribute

@@ -2,7 +2,7 @@ import SnakeHeadBackGeometry from './SnakeHeadBackGeometry'
 import { snakeCONFIG } from '../../../../../config/snakeConfig'
 function SnakeHeadBack() {
   return (
-    <mesh>
+    <mesh receiveShadow castShadow>
       <SnakeHeadBackGeometry />
       <meshStandardMaterial
         color={snakeCONFIG.snakeFirstCOLOR}

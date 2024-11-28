@@ -8,7 +8,7 @@ function Sphere() {
   const pivotRef = useRef<Group>(null)
 
   const { position, color, gizmo } = useControls('Sphere', {
-    position: [-2, 0, 0],
+    position: [0, 0, 0.8],
     color: 'darkorange',
     gizmo: false,
   })
@@ -16,7 +16,7 @@ function Sphere() {
   return (
     <PivotControls anchor={[0, 0, 0]} depthTest={false} visible={gizmo} ref={pivotRef}>
       <mesh position={position} ref={sphereRef} castShadow>
-        <sphereGeometry args={[1, 30, 30]} />
+        <sphereGeometry args={[0.3, 30, 30]} />
         <meshStandardMaterial color={color} />
       </mesh>
     </PivotControls>

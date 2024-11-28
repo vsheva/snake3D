@@ -1,9 +1,9 @@
 import { GeometryProps } from '../../../../types/threeTypes'
 import SnakeEyeApple from './SnakeEyeApple'
 import SnakeEyePupil from './SnakeEyePupil'
-function SnakeEyes(/*props: GeometryProps*/) {
+function SnakeEyes(props: GeometryProps) {
   return (
-    <group /*{...props}*/>
+    <group {...props}>
       <SnakeEyeApple />
       <SnakeEyePupil />
     </group>

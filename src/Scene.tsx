@@ -10,10 +10,17 @@ import { Sky } from '@react-three/drei'
 import { fieldCONFIG } from './config/fieldConfig'
 import { Sphere } from './components/Sphere'
 import Snake from './components/Snake'
+import Apple from './components/Apple'
 function Scene() {
   const { performance } = useControls('Monitoring', {
     performance: false,
   })
+  // const { positionX, positionY, rotationZ } =
+  //   useControls('Snake', {
+  //     positionX: 0,
+  //     positionY: 0.35,
+  //     rotationZ
+  //   })
 
   // const { animate } = useControls('Cube', {
   //   animate: true,
@@ -41,9 +48,10 @@ function Scene() {
       />
       <ambientLight intensity={0.2} />
 
-      {/* <Cube ref={cubeRef} /> */}
+      {/* <Cube /> */}
       {/* <Sphere /> */}
       <Snake />
+      <Apple />
       <Sky sunPosition={[-2, 2, 3]} />
       <Field size={fieldCONFIG.fieldSIZE} />
     </>

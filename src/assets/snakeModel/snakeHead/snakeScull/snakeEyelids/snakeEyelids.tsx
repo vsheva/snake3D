@@ -2,7 +2,7 @@ import SnakeEyelidsGeometry from './SnakeEyelidsGeometry'
 import { snakeCONFIG } from '../../../../../config/snakeConfig'
 function SnakeEyelids() {
   return (
-    <mesh>
+    <mesh receiveShadow castShadow>
       <SnakeEyelidsGeometry />
       <meshStandardMaterial
         color={snakeCONFIG.snakeSecondCOLOR}

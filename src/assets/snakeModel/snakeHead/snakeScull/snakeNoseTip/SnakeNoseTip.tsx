@@ -3,7 +3,7 @@ import SnakeNoseTipGeometry from './SnakeNoseTipGeometry'
 
 function SnakeNoseTip() {
   return (
-    <mesh>
+    <mesh receiveShadow castShadow>
       <SnakeNoseTipGeometry />
       <meshStandardMaterial
         color={snakeCONFIG.snakeFirstCOLOR}

@@ -28,28 +28,28 @@ export const snakeCONFIG = {
   snakeHEAD: {
     shape: {
       scull: <GeometryProps>{
-        position: new Vector3(0.055, -0.1, 0),
+        position: new Vector3(0, 0, 0.25),
         'rotation-x': 0,
         'rotation-y': 0,
-        'rotation-z': 55,
+        'rotation-z': 54.98,
         scale: 0.4,
       },
       eyes: <GeometryProps>{
-        position: new Vector3(0.05, 0.04, -0.54),
-        'rotation-x': 23,
-        'rotation-y': 0.04,
-        'rotation-z': 55,
+        position: new Vector3(0, 0.06, 0.785),
+        'rotation-x': 23.3,
+        'rotation-y': 0,
+        'rotation-z': 54.98,
         scale: 0.4,
       },
       jaw: <GeometryProps>{
-        position: new Vector3(0.07, 0.005, 0.14),
-        'rotation-x': 0,
+        position: new Vector3(0, 0.11, 0.11),
+        'rotation-x': -0.05,
         'rotation-y': 0,
-        'rotation-z': 54.95,
+        'rotation-z': 54.98,
         scale: 0.4,
       },
       tongue: <GeometryProps>{
-        position: new Vector3(0.05, 0.2, 0),
+        position: new Vector3(0, 0.35, 0.23),
         'rotation-x': 0,
         'rotation-y': 0,
         'rotation-z': 22,
@@ -59,11 +59,11 @@ export const snakeCONFIG = {
   },
   snakeTAIL: {
     shape: <GeometryProps>{
-      position: new Vector3(0, 0, 0),
+      position: new Vector3(0, -1.05, 0.05),
       'rotation-x': 0,
       'rotation-y': 0,
       'rotation-z': 11,
-      scale: 1,
+      scale: 0.8,
     },
   },
 }
