@@ -8,11 +8,11 @@ import SnakeCheeks from './snakeCheeks/SnakeCheeks'
 import SnakeEyelids from './snakeEyelids/snakeEyelids'
 import SnakeNostrils from './snakeNostrils/SnakeNostrils'
 import SnakeUpperPalate from './snakeUpperPalate/SnakeUpperPalate'
-import { GeometryProps } from '../../../../types/threeTypes'
+import { snakeCONFIG } from '../../../../config/snakeConfig/snakeCONFIG'
 
-function SnakeScull(props: GeometryProps) {
+function SnakeScull() {
   return (
-    <group {...props}>
+    <group {...snakeCONFIG.head.scull}>
       <SnakeHeadBack />
       <SnakeForehead />
       <SnakeNoseBridge />

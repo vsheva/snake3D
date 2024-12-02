@@ -1,14 +1,12 @@
-// import { getSnakeOpacity } from "../../../../Components/Snake/setSnakeOpacity";
-import { snakeCONFIG } from '../../../../config/snakeConfig'
-import { GeometryProps } from '../../../../types/threeTypes'
+import { snakeCONFIG } from '../../../../config/snakeConfig/snakeCONFIG'
 import SnakeJawGeometry from './SnakeJawGeometry'
-function SnakeJaw(props: GeometryProps) {
+function SnakeJaw() {
   return (
-    <mesh {...props} receiveShadow castShadow>
+    <mesh {...snakeCONFIG.head.jaw} receiveShadow castShadow>
       <SnakeJawGeometry />
       <meshStandardMaterial
-        color={snakeCONFIG.snakeSecondCOLOR}
-        opacity={snakeCONFIG.snakeOPACITY}
+        color={snakeCONFIG.colors.snakeSecondCOLOR}
+        opacity={snakeCONFIG.opacity}
         transparent
       />
     </mesh>

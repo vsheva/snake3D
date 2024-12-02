@@ -1,4 +1,4 @@
-import { snakeCONFIG } from '../../../../../config/snakeConfig'
+import { snakeCONFIG } from '../../../../../config/snakeConfig/snakeCONFIG'
 import SnakeUpperLipGeometry from './SnakeUpperLipGeometry'
 
 function SnakeUpperLip() {
@@ -6,8 +6,8 @@ function SnakeUpperLip() {
     <mesh receiveShadow castShadow>
       <SnakeUpperLipGeometry />
       <meshStandardMaterial
-        color={snakeCONFIG.snakeFirstCOLOR}
-        opacity={snakeCONFIG.snakeOPACITY}
+        color={snakeCONFIG.colors.snakeFirstCOLOR}
+        opacity={snakeCONFIG.opacity}
         transparent
       />
     </mesh>

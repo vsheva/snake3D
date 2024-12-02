@@ -13,7 +13,7 @@ import Snake from './components/Snake'
 import Apple from './components/Apple'
 function Scene() {
   const { performance } = useControls('Monitoring', {
-    performance: false,
+    performance: true,
   })
   // const { positionX, positionY, rotationZ } =
   //   useControls('Snake', {
@@ -38,7 +38,7 @@ function Scene() {
     <>
       {performance && <Perf position='top-left' />}
 
-      <OrbitControls makeDefault />
+      {/* <OrbitControls makeDefault /> */}
 
       <directionalLight
         position={[-2, 2, 3]}

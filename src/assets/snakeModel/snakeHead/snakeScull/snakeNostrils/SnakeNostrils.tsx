@@ -1,4 +1,4 @@
-import { snakeCONFIG } from '../../../../../config/snakeConfig'
+import { snakeCONFIG } from '../../../../../config/snakeConfig/snakeCONFIG'
 import SnakeNostrilsGeometry from './SnakeNostrilsGeometry'
 
 function SnakeNostrils() {
@@ -6,8 +6,8 @@ function SnakeNostrils() {
     <mesh receiveShadow castShadow>
       <SnakeNostrilsGeometry />
       <meshStandardMaterial
-        color={snakeCONFIG.snakeSecondCOLOR}
-        opacity={snakeCONFIG.snakeOPACITY}
+        color={snakeCONFIG.colors.snakeSecondCOLOR}
+        opacity={snakeCONFIG.opacity}
         transparent
       />
     </mesh>

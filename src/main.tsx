@@ -1,4 +1,4 @@
-import { Canvas } from '@react-three/fiber'
+import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { Leva } from 'leva'
 import React from 'react'
 import ReactDOM from 'react-dom/client'

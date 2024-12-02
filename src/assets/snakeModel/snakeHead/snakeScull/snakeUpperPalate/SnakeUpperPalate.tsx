@@ -1,4 +1,4 @@
-import { snakeCONFIG } from '../../../../../config/snakeConfig'
+import { snakeCONFIG } from '../../../../../config/snakeConfig/snakeCONFIG'
 import SnakeUpperPalateGeometry from './SnakeUpperPalateGeometry'
 
 function SnakeUpperPalate() {
@@ -6,8 +6,8 @@ function SnakeUpperPalate() {
     <mesh receiveShadow castShadow>
       <SnakeUpperPalateGeometry />
       <meshStandardMaterial
-        color={snakeCONFIG.snakeMOUTH.upperPalate.color}
-        opacity={snakeCONFIG.snakeOPACITY}
+        color={snakeCONFIG.colors.snakeThirdCOLOR}
+        opacity={snakeCONFIG.opacity}
         transparent
       />
     </mesh>
