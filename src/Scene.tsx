@@ -1,61 +1,40 @@
 import { OrbitControls } from '@react-three/drei'
-import { useFrame } from '@react-three/fiber'
 import { useControls } from 'leva'
 import { Perf } from 'r3f-perf'
-import { useRef } from 'react'
-import { BoxGeometry, Mesh, MeshBasicMaterial } from 'three'
-import { Cube } from './components/Cube'
 import { Field } from './components/Field'
-import { Sky } from '@react-three/drei'
-import { fieldCONFIG } from './config/fieldConfig'
-import { Sphere } from './components/Sphere'
+import { Environment } from './components/Environment'
 import Snake from './components/Snake'
 import Apple from './components/Apple'
-function Scene() {
+import { useFrame, useThree } from '@react-three/fiber'
+import { cameraCONFIG } from './config/cameraConfig'
+
+export function Scene() {
   const { performance } = useControls('Monitoring', {
     performance: true,
   })
-  // const { positionX, positionY, rotationZ } =
-  //   useControls('Snake', {
-  //     positionX: 0,
-  //     positionY: 0.35,
-  //     rotationZ
-  //   })
 
-  // const { animate } = useControls('Cube', {
-  //   animate: true,
-  // })
+  const { camera } = useThree()
 
-  // const cubeRef = useRef<Mesh<BoxGeometry, MeshBasicMaterial>>(null)
-
-  // useFrame((_, delta) => {
-  //   if (animate) {
-  //     cubeRef.current!.rotation.y += delta / 3
-  //   }
-  // })
-
+  const [x, y, z] = cameraCONFIG.position
+  camera.position.set(x, y, z)
+  const [xx, yy, zz] = cameraCONFIG.rotation
+  camera.rotation.set(xx, yy, zz)
+  let speed = 0
+  useFrame((_, delta) => {
+    // camera.position.y = camera.position.y + speed * delta
+    camera.position.x = camera.position.x + speed * delta
+    camera.updateProjectionMatrix()
+  })
   return (
     <>
       {performance && <Perf position='top-left' />}
 
       {/* <OrbitControls makeDefault /> */}
 
-      <directionalLight
-        position={[-2, 2, 3]}
-        intensity={1.5}
-        castShadow
-        shadow-mapSize={[1024 * 2, 1024 * 2]}
-      />
-      <ambientLight intensity={0.2} />
-
-      {/* <Cube /> */}
-      {/* <Sphere /> */}
       <Snake />
       <Apple />
-      <Sky sunPosition={[-2, 2, 3]} />
-      <Field size={fieldCONFIG.fieldSIZE} />
+      <Field />
+      <Environment />
     </>
   )
 }
-
-export { Scene }

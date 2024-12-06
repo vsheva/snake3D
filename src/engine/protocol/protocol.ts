@@ -5,41 +5,41 @@
  *    @function setProtocol Помещает в протокол зараннее созданную версию
  *    @function getProtocol Возвращает протокол
  */
-import { Event } from "../../types/event";
-import { Protocol, ProtocolEvent } from "../../types/protocol";
-import { getTimer } from "../time/timer";
+import { Event } from '../../types/eventTypes'
+import { Protocol, ProtocolEvent } from '../../types/protocolTypes'
+import { getTimer } from '../time/timer'
 /**
  * @var массив событий, происходящих во время игры
  */
-let protocol: Protocol = [];
+let protocol: Protocol = []
 /**
  * Заносит новое событие в протокол
  * @param newEvent новое событие
  */
 export function addEvent(newEvent: Event): void {
-  let lastTime = 0;
+  let lastTime = 0
   if (getProtocol().length - 1 > 0) {
-    const { time } = getProtocol()[getProtocol().length - 1];
-    lastTime = time;
+    const { time } = getProtocol()[getProtocol().length - 1]
+    lastTime = time
   }
   const protocolEvent: ProtocolEvent = {
-    time: newEvent.name === "level is complete" ? lastTime : getTimer(),
+    time: newEvent.name === 'level is complete' ? lastTime : getTimer(),
     name: newEvent.name,
     value: newEvent.value,
-  };
-  protocol.push(protocolEvent);
+  }
+  protocol.push(protocolEvent)
 }
 /**
  * Помещает сторонний протокол в игру
  * @param currentProtocol сторонний протокол
  */
 export function setProtocol(currentProtocol: Protocol): void {
-  protocol = [...currentProtocol];
+  protocol = [...currentProtocol]
 }
 /**
  * Возвращает протокол
  * @returns protocol
  */
 export function getProtocol(): Protocol {
-  return protocol;
+  return protocol
 }

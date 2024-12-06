@@ -2,7 +2,7 @@
  * @module obstacleBounce.ts Отрабатывает отскок препятствия от другого объекта
  *    @function obstacleBounce Изменяет шаг отскочившего препятствия на обратный
  */
-import { newObstacleStep } from "../../types/obstacle";
+import { newObstacleStep } from '../../types/obstacleTypes'
 /**
  * При касании препятствия с другим объектом изменяет его шаг на обратный
  * @param props аргументы, необходимые для вычисления отскока препятствия
@@ -12,16 +12,16 @@ import { newObstacleStep } from "../../types/obstacle";
  * @returns измененный шаг отскочившего препятствия
  */
 function obstacleBounce(props: newObstacleStep): number {
-  const { i, twist, coord, step, cell } = props;
+  const { i, twist, coord, step, cell } = props
   if (cell) {
-    const [posX, posY] = cell;
+    const [posX, posY] = cell
     if (
       coord[i][twist[0]] + step[i] === [posX, posY][twist[0]] &&
       coord[i][twist[1]] === [posX, posY][twist[1]]
     )
-      step[i] = step[i] * -1;
+      step[i] = step[i] * -1
   }
-  return step[i];
+  return step[i]
 }
 
-export default obstacleBounce;
+export default obstacleBounce

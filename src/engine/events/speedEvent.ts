@@ -3,14 +3,14 @@
  *     @var currentDirection Фиксирует направление змейки при изменении скорости
  *     @function speedElement Изменяет скорость змейки на шаг за одно нажатие
  */
-import { Event } from "../../types/event";
-import findLastMoveDirection from "../protocol/findLastMoveDirection";
-import checkTimerStep from "../time/checkTimerStep";
-import { checkTimerWorking } from "../time/isTimer";
+import { Event } from '../../types/eventTypes'
+import findLastMoveDirection from '../protocol/findLastMoveDirection'
+import checkTimerStep from '../time/checkTimerStep'
+import { checkTimerWorking } from '../time/isTimer'
 /**
  * @var Хранит последнее направление движения змейки
  */
-let currentDirection: string | number;
+let currentDirection: string | number
 /**
  * Создает событие изменения скорости на шаг нажатием стрелок по оси движения
  * @description
@@ -23,50 +23,34 @@ let currentDirection: string | number;
  * @returns событие изменения скорости змейки
  */
 function speedEvent(e: KeyboardEvent): Event {
-  let newEvent: Event = Object.assign({}, { name: "", value: "" });
-  if (!checkTimerWorking()) return newEvent;
-  const moveDirection = findLastMoveDirection();
-  if (!isNaN(+moveDirection.value)) currentDirection = moveDirection.value;
+  let newEvent: Event = Object.assign({}, { name: '', value: '' })
+  if (!checkTimerWorking()) return newEvent
+  const moveDirection = findLastMoveDirection()
+  if (!isNaN(+moveDirection.value)) currentDirection = moveDirection.value
   if (
-    (moveDirection.name === "X" &&
-      currentDirection === 1 &&
-      e.code === "ArrowRight") ||
-    (moveDirection.name === "X" &&
-      currentDirection === -1 &&
-      e.code === "ArrowLeft") ||
-    (moveDirection.name === "Y" &&
-      currentDirection === 1 &&
-      e.code === "ArrowUp") ||
-    (moveDirection.name === "Y" &&
-      currentDirection === -1 &&
-      e.code === "ArrowDown")
+    (moveDirection.name === 'X' && currentDirection === 1 && e.code === 'ArrowRight') ||
+    (moveDirection.name === 'X' && currentDirection === -1 && e.code === 'ArrowLeft') ||
+    (moveDirection.name === 'Y' && currentDirection === 1 && e.code === 'ArrowUp') ||
+    (moveDirection.name === 'Y' && currentDirection === -1 && e.code === 'ArrowDown')
   )
-    newEvent = Object.assign({}, { name: moveDirection.name, value: "+" });
-  if (checkTimerStep() && moveDirection.name === "X" && e.code === "ArrowUp")
-    newEvent = Object.assign({}, { name: "Y", value: 1 });
-  if (checkTimerStep() && moveDirection.name === "X" && e.code === "ArrowDown")
-    newEvent = Object.assign({}, { name: "Y", value: -1 });
-  if (checkTimerStep() && moveDirection.name === "Y" && e.code === "ArrowRight")
-    newEvent = Object.assign({}, { name: "X", value: 1 });
-  if (checkTimerStep() && moveDirection.name === "Y" && e.code === "ArrowLeft")
-    newEvent = Object.assign({}, { name: "X", value: -1 });
+    newEvent = Object.assign({}, { name: moveDirection.name, value: '+' })
+  if (checkTimerStep() && moveDirection.name === 'X' && e.code === 'ArrowUp')
+    newEvent = Object.assign({}, { name: 'Y', value: 1 })
+  if (checkTimerStep() && moveDirection.name === 'X' && e.code === 'ArrowDown')
+    newEvent = Object.assign({}, { name: 'Y', value: -1 })
+  if (checkTimerStep() && moveDirection.name === 'Y' && e.code === 'ArrowRight')
+    newEvent = Object.assign({}, { name: 'X', value: 1 })
+  if (checkTimerStep() && moveDirection.name === 'Y' && e.code === 'ArrowLeft')
+    newEvent = Object.assign({}, { name: 'X', value: -1 })
   if (
-    (moveDirection.name === "X" &&
-      currentDirection === 1 &&
-      e.code === "ArrowLeft") ||
-    (moveDirection.name === "X" &&
-      currentDirection === -1 &&
-      e.code === "ArrowRight") ||
-    (moveDirection.name === "Y" &&
-      currentDirection === 1 &&
-      e.code === "ArrowDown") ||
-    (moveDirection.name === "Y" &&
-      currentDirection === -1 &&
-      e.code === "ArrowUp")
+    (moveDirection.name === 'X' && currentDirection === 1 && e.code === 'ArrowLeft') ||
+    (moveDirection.name === 'X' && currentDirection === -1 && e.code === 'ArrowRight') ||
+    (moveDirection.name === 'Y' && currentDirection === 1 && e.code === 'ArrowDown') ||
+    (moveDirection.name === 'Y' && currentDirection === -1 && e.code === 'ArrowUp')
   )
-    newEvent = Object.assign({}, { name: moveDirection.name, value: "-" });
+    newEvent = Object.assign({}, { name: moveDirection.name, value: '-' })
 
-  return newEvent;
+  return newEvent
 }
 
-export default speedEvent;
+export default speedEvent

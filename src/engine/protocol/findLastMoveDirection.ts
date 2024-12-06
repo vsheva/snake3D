@@ -2,8 +2,8 @@
  * @module findLastMoveDirection.ts Поиск текущего направления движения змейки
  *    @function findLastMoveDirection Возвращает направление движения змейки
  */
-import { Event } from "../../types/event";
-import { getProtocol } from "./protocol";
+import { Event } from '../../types/eventTypes'
+import { getProtocol } from './protocol'
 /**
  * Ищет последнее изменение направления движения змейки
  *    находит в протоколе все события старта нового уровня
@@ -13,25 +13,24 @@ import { getProtocol } from "./protocol";
  */
 function findLastMoveDirection(): Event {
   const allStartLevelEvents = getProtocol().filter(
-    (event) => event.name === "start level"
-  );
-  const lastLevelNumber =
-    allStartLevelEvents[allStartLevelEvents.length - 1].value;
+    (event) => event.name === 'start level'
+  )
+  const lastLevelNumber = allStartLevelEvents[allStartLevelEvents.length - 1].value
   const lastStartLevelEvent = getProtocol().findIndex(
-    (event) => event.name === "start level" && event.value === lastLevelNumber
-  );
+    (event) => event.name === 'start level' && event.value === lastLevelNumber
+  )
   const moveDirections = getProtocol()
     .slice(lastStartLevelEvent)
-    .filter((event) => event.name === "X" || event.name === "Y");
+    .filter((event) => event.name === 'X' || event.name === 'Y')
   const moveDirection: Event =
     moveDirections.length !== 0
       ? {
           name: moveDirections[moveDirections.length - 1].name,
           value: moveDirections[moveDirections.length - 1].value,
         }
-      : { name: "", value: "" };
+      : { name: '', value: '' }
 
-  return moveDirection;
+  return moveDirection
 }
 
-export default findLastMoveDirection;
+export default findLastMoveDirection

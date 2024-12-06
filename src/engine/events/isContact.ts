@@ -5,10 +5,10 @@
 /**
  * @var contact фиксирует (true) контакт головы змейки с запрещенным объектом.
  */
-let contact = false;
-import { SnakeHeadCoord } from "../../types/snake";
-import { mistakeWasMade } from "../lives/isMistake";
-import protocolExecutor from "../protocol/protocolExecutor";
+let contact = false
+import { SnakeHeadCoord } from '../../types/snakeTypes'
+import { mistakeWasMade } from '../lives/isMistake'
+import protocolExecutor from '../protocol/protocolExecutor'
 /**
  *  Выполняет действия, связанные с запрещенным контактом головы змейки
  * @param snakeHead Параметры головы змейки
@@ -20,34 +20,31 @@ import protocolExecutor from "../protocol/protocolExecutor";
  *  4. заносит событие контакта в протокол
  * @returns Измененные параметры головы змейки
  */
-export function isContact(
-  snakeHead: SnakeHeadCoord,
-  mistake: string
-): SnakeHeadCoord {
-  snakeHead.snakeHeadStepX = 0;
-  snakeHead.snakeHeadStepY = 0;
-  const coordX = snakeHead.snakeHeadCoordX;
-  const coordY = snakeHead.snakeHeadCoordY;
-  const value = `${mistake} ${coordX}:${coordY} contact`;
-  mistakeWasMade();
-  contact = true;
+export function isContact(snakeHead: SnakeHeadCoord, mistake: string): SnakeHeadCoord {
+  snakeHead.snakeHeadStepX = 0
+  snakeHead.snakeHeadStepY = 0
+  const coordX = snakeHead.snakeHeadCoordX
+  const coordY = snakeHead.snakeHeadCoordY
+  const value = `${mistake} ${coordX}:${coordY} contact`
+  mistakeWasMade()
+  contact = true
   protocolExecutor({
-    name: "life lost",
+    name: 'life lost',
     value: value,
-  });
+  })
 
-  return snakeHead;
+  return snakeHead
 }
 /**
  * Возвращает состояние контакта: true - контакт, false - нет контакта
  * @returns contact
  */
 export function checkContact(): boolean {
-  return contact;
+  return contact
 }
 /**
  * Фиксирует прерывание контакта головы змейки с запрещенным объектом
  */
 export function breakContact(): void {
-  contact = false;
+  contact = false
 }

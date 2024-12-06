@@ -2,8 +2,8 @@
  * @module contactBorderObstacle.ts Управляет контактом препятствий с краями поля
  *    @function contactBorderObstacle Изменяет направление движение препятствий
  */
-import { obstacleContactProps } from "../../types/obstacle";
-import { getField } from "../field/fieldPerLevel";
+import { obstacleContactProps } from '../../types/obstacleTypes'
+import { getField } from '../field/fieldPerLevel'
 /**
  * При контакте с краем поля меняет направление движения препятствия
  * @param props объект с аргументами функции, проверяющей контакты препятствий
@@ -14,11 +14,11 @@ import { getField } from "../field/fieldPerLevel";
  * @return измененный шаг препятствия, коснувшегося края поля
  */
 function contactBorderObstacle(props: obstacleContactProps): number {
-  const { i, twist, coord, step } = props;
-  if (coord[i][twist[0]] === 1) step[i] = 1;
-  if (coord[i][twist[0]] === getField()) step[i] = -1;
+  const { i, twist, coord, step } = props
+  if (coord[i][twist[0]] === 1) step[i] = 1
+  if (coord[i][twist[0]] === getField()) step[i] = -1
 
-  return step[i];
+  return step[i]
 }
 
-export default contactBorderObstacle;
+export default contactBorderObstacle

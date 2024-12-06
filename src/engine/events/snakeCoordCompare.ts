@@ -2,7 +2,7 @@
  *  @module snakeCoordCompare.ts Управляет контактами головы змейки
  *     @function snakeCoordCompare Сравнивает координаты препятствий и головы змейки
  */
-import { SnakeHeadCoord, HeadCompare } from "../../types/snake";
+import { SnakeHeadCoord, HeadCompare } from '../../types/snakeTypes'
 /**
  * Сравнивает координаты головы змейки с заданной позицией
  * @param snakeHead Параметры головы змейки
@@ -19,15 +19,13 @@ function snakeCoordCompare(
   contact =
     snakeHead.snakeHeadCoordY === pos[1] && snakeHead.snakeHeadCoordX === pos[0]
       ? true
-      : false;
+      : false
   if (contact) {
-    snakeHead.snakeHeadCoordY =
-      snakeHead.snakeHeadCoordY - snakeHead.snakeHeadStepY;
-    snakeHead.snakeHeadCoordX =
-      snakeHead.snakeHeadCoordX - snakeHead.snakeHeadStepX;
+    snakeHead.snakeHeadCoordY = snakeHead.snakeHeadCoordY - snakeHead.snakeHeadStepY
+    snakeHead.snakeHeadCoordX = snakeHead.snakeHeadCoordX - snakeHead.snakeHeadStepX
   }
 
-  return [snakeHead, contact];
+  return [snakeHead, contact]
 }
 
-export default snakeCoordCompare;
+export default snakeCoordCompare

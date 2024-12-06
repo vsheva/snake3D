@@ -3,11 +3,11 @@
  *     @function lifeLost Выполняет действия при потере жизни
  */
 
-import { setSnakeOpacity } from "../../Components/Snake/setSnakeOpacity";
-import { checkMistake, noMistakeWasMade } from "../lives/isMistake";
-import { setLives } from "../lives/lives";
-import getSelectors from "../render/getSelectors";
-import { stopTimer } from "../time/isTimer";
+// import { setSnakeOpacity } from "../../Components/Snake/setSnakeOpacity";
+import { checkMistake, noMistakeWasMade } from '../lives/isMistake'
+import { setLives } from '../lives/lives'
+import getSelectors from '../render/getSelectors'
+import { stopTimer } from '../time/isTimer'
 /**
  *  Запускается при потере жизни игроком
  *  @description
@@ -16,28 +16,28 @@ import { stopTimer } from "../time/isTimer";
  *      3. Возвращает игру в состояние ожидания новых действий игрока
  */
 function lifeLost(): void {
-  const { lifeElement } = getSelectors();
-  let attention = false;
-  stopTimer();
+  const { lifeElement } = getSelectors()
+  let attention = false
+  stopTimer()
   if (checkMistake()) {
-    setLives(-1);
+    setLives(-1)
     const intervalID = setInterval(
       () => {
-        attention = !attention;
-        setSnakeOpacity(attention ? 0.4 : 1);
-        if (lifeElement) lifeElement.style.opacity = `${attention ? 0.4 : 1}`;
+        attention = !attention
+        // setSnakeOpacity(attention ? 0.4 : 1);
+        if (lifeElement) lifeElement.style.opacity = `${attention ? 0.4 : 1}`
       },
       300,
       { once: true }
-    );
+    )
 
     setTimeout(() => {
-      clearInterval(intervalID);
-      setSnakeOpacity(1);
-    }, 5000);
+      clearInterval(intervalID)
+      // setSnakeOpacity(1);
+    }, 5000)
 
-    noMistakeWasMade();
+    noMistakeWasMade()
   }
 }
 
-export default lifeLost;
+export default lifeLost

@@ -7,3 +7,13 @@ export interface GeometryProps {
   'rotation-z': number
   scale: number
 }
+
+export interface CameraProps {
+  fov: number
+  near: number
+  far: number
+  aspect: number
+  position: number[]
+  rotation: number[]
+  zoom: number
+}

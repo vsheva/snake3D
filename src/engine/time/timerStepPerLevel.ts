@@ -10,36 +10,36 @@
 /**
  *  @var Шаги перерисовки экрана в миллисекундах
  */
-const steps = [0, 300, 150, 120, 100, 75];
+const steps = [0, 1, 2, 3, 4, 5]
 /**
  * @var Индекс интервала перерисовки игры в массиве steps
  */
-let timerStepPerLevel: number;
+let timerStepPerLevel: number
 /**
  * Задает индекс интервала перерисовки игры
  * @param step Индекс интервала перерисовки
  */
 export function setTimerStep(step: number): void {
-  timerStepPerLevel = step;
+  timerStepPerLevel = step
 }
 /**
  * Возвращает скорость перемещения змейки
  * @returns индекс интервала перерисовки
  */
 export function getStep(): number {
-  return timerStepPerLevel;
+  return timerStepPerLevel
 }
 /**
  * Возвращает интервал перерисовки игры в миллисекундах
  * @returns интервал перерисовки игры в миллисекундах
  */
 export function getTimerStep(): number {
-  return steps[timerStepPerLevel];
+  return steps[timerStepPerLevel]
 }
 /**
  * Возвращает количество интервалов перерисовки -
  * фиксированных скоростей змейки
  */
 export function getSpeedLimit(): number {
-  return steps.length - 1;
+  return steps.length - 1
 }

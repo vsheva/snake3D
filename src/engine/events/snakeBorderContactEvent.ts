@@ -2,11 +2,11 @@
  * @module snakeBorderContactEvent.ts Управляет контактом змейки с краями поля
  *    @function snakeBorderContactEvent Останавливает или переносит змейку
  */
-import { SnakeHeadCoord } from "../../types/snake";
-import { getCrossesBorders } from "../bonuses/bonusSnakeCrossesBorders";
-import { getField } from "../field/fieldPerLevel";
-import { isContact } from "./isContact";
-import isCross from "./isCross";
+import { SnakeHeadCoord } from '../../types/snakeTypes'
+import { getCrossesBorders } from '../bonuses/bonusSnakeCrossesBorders'
+import { getField } from '../field/fieldPerLevel'
+import { isContact } from './isContact'
+import isCross from './isCross'
 /**
  * Срабатывает при контакте головы змейки с краем поля
  * @param snakeHead параметры головы змейки
@@ -18,30 +18,28 @@ import isCross from "./isCross";
  * @returns скорректированные при контакте с краем поля параметры головы змейки
  */
 function snakeBorderContactEvent(snakeHead: SnakeHeadCoord): SnakeHeadCoord {
-  let borderContact = false;
+  let borderContact = false
   if (snakeHead.snakeHeadCoordX === 0) {
-    snakeHead.snakeHeadCoordX = getCrossesBorders() ? getField() : 1;
-    borderContact = true;
+    snakeHead.snakeHeadCoordX = getCrossesBorders() ? getField() : 1
+    borderContact = true
   }
   if (snakeHead.snakeHeadCoordX > getField()) {
-    snakeHead.snakeHeadCoordX = getCrossesBorders() ? 1 : getField();
-    borderContact = true;
+    snakeHead.snakeHeadCoordX = getCrossesBorders() ? 1 : getField()
+    borderContact = true
   }
   if (snakeHead.snakeHeadCoordY === 0) {
-    snakeHead.snakeHeadCoordY = getCrossesBorders() ? getField() : 1;
-    borderContact = true;
+    snakeHead.snakeHeadCoordY = getCrossesBorders() ? getField() : 1
+    borderContact = true
   }
   if (snakeHead.snakeHeadCoordY > getField()) {
-    snakeHead.snakeHeadCoordY = getCrossesBorders() ? 1 : getField();
-    borderContact = true;
+    snakeHead.snakeHeadCoordY = getCrossesBorders() ? 1 : getField()
+    borderContact = true
   }
   if (borderContact) {
-    snakeHead = getCrossesBorders()
-      ? isCross(snakeHead)
-      : isContact(snakeHead, "border");
+    snakeHead = getCrossesBorders() ? isCross(snakeHead) : isContact(snakeHead, 'border')
   }
 
-  return snakeHead;
+  return snakeHead
 }
 
-export default snakeBorderContactEvent;
+export default snakeBorderContactEvent
