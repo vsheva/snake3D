@@ -93,7 +93,7 @@ const swipeDirectionEvent = (): Event => {
     }
   }
   if (newEvent.name !== '' && !checkPause()) TIMER.startTimer()
-
+  console.log(newEvent)
   return newEvent
 }
 

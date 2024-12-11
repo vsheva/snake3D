@@ -34,9 +34,9 @@ const changeDirectionEvent = (e: KeyboardEvent): Event => {
   const moveDirection = findLastMoveDirection()
   let newName = ''
   let newValue = 0
-  prohibitedMove.direction = getSnakeMoveDirection()[0]
-  prohibitedMove.step =
-    getSnakeMoveDirection()[1] === 'up' || getSnakeMoveDirection()[1] === 'right' ? -1 : 1
+  // prohibitedMove.direction = getSnakeMoveDirection()[0]
+  // prohibitedMove.step =
+  //   getSnakeMoveDirection()[1] === 'up' || getSnakeMoveDirection()[1] === 'right' ? -1 : 1
   if (!checkTimerWorking() || checkContact()) moveDirection.name = ''
   if (checkTimerStep() || getInterruptGame()) return { name: newName, value: newValue }
   if (e.code === 'ArrowUp' && moveDirection.name !== 'Y') {
@@ -56,11 +56,12 @@ const changeDirectionEvent = (e: KeyboardEvent): Event => {
     newName = 'X'
     newValue = 1
   }
-  if (newName === prohibitedMove.direction && newValue === prohibitedMove.step)
-    return { name: '', value: 0 }
+
+  // if (newName === prohibitedMove.direction && newValue === prohibitedMove.step)
+  //   return { name: '', value: 0 }
   if (newName !== '' && !checkPause()) TIMER.startTimer()
   const newEvent = Object.assign({}, { name: newName, value: newValue })
-  console.log(newEvent)
+
   return newEvent
 }
 

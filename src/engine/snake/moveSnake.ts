@@ -2,11 +2,11 @@
  * @module moveSnake.ts Управляет движением змейки
  *    @function moveSnake Двигает змейку по игровому полю
  */
-import allContactEvents from "../events/allContactEvents";
-import { breakContact } from "../events/isContact";
-import { checkMistake } from "../lives/isMistake";
-import { checkTimerWorking, startTimer } from "../time/isTimer";
-import * as SNAKE from "./snake";
+import allContactEvents from '../events/allContactEvents'
+import { breakContact } from '../events/isContact'
+import { checkMistake } from '../lives/isMistake'
+import { checkTimerWorking, startTimer } from '../time/isTimer'
+import * as SNAKE from './snake'
 /**
  * Изменяет координаты головы и тела змейки по осям только во время игры
  * @description
@@ -22,25 +22,25 @@ import * as SNAKE from "./snake";
  */
 function moveSnake(): void {
   if (checkTimerWorking()) {
-    let snakeHead = { ...SNAKE.getSnakeHeadParams() };
-    const newBodyCoord = [...SNAKE.getSnakeBodyCoord()];
-    if (snakeHead.snakeHeadStepX !== 0 || snakeHead.snakeHeadStepY !== 0) {
-      snakeHead.snakeHeadCoordX += snakeHead.snakeHeadStepX;
-      snakeHead.snakeHeadCoordY += snakeHead.snakeHeadStepY;
-      snakeHead = allContactEvents(snakeHead);
-      SNAKE.setSnakeHeadParams(snakeHead);
-      if (checkTimerWorking() && !checkMistake()) {
-        breakContact();
-        for (let i = newBodyCoord.length - 1; i > 0; i--)
-          newBodyCoord[i] = newBodyCoord[i - 1];
-        newBodyCoord[0] = [
-          snakeHead.snakeHeadCoordX,
-          snakeHead.snakeHeadCoordY,
-        ];
-        SNAKE.setSnakeBodyCoord(newBodyCoord);
-      } else startTimer();
-    }
+    let snakeHead = { ...SNAKE.getSnakeHeadParams() }
+    // console.log('move: ', snakeHead)
+
+    //   const newBodyCoord = [...SNAKE.getSnakeBodyCoord()]
+
+    //   if (snakeHead.snakeHeadStepX !== 0 || snakeHead.snakeHeadStepY !== 0) {
+    //     snakeHead.snakeHeadCoordX += snakeHead.snakeHeadStepX
+    //     snakeHead.snakeHeadCoordY += snakeHead.snakeHeadStepY
+    //     snakeHead = allContactEvents(snakeHead)
+    //     SNAKE.setSnakeHeadParams(snakeHead)
+    //     if (checkTimerWorking() && !checkMistake()) {
+    //       breakContact()
+    //       for (let i = newBodyCoord.length - 1; i > 0; i--)
+    //         newBodyCoord[i] = newBodyCoord[i - 1]
+    //       newBodyCoord[0] = [snakeHead.snakeHeadCoordX, snakeHead.snakeHeadCoordY]
+    //       SNAKE.setSnakeBodyCoord(newBodyCoord)
+    //     } else startTimer()
+    //   }
   }
 }
 
-export default moveSnake;
+export default moveSnake

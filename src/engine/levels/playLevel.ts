@@ -3,10 +3,11 @@
  *     @function playLevel Последовательно запускает игровые функции
  */
 
-import snakeCatchesBonusEvent from "../events/snakeCatchesBonusEvent";
-import { snakeCatchesFoodEvent } from "../events/snakeCatchesFoodEvent";
-import setObstacleParams from "../obstacles/setObstacleParams";
-import moveSnake from "../snake/moveSnake";
+import bonusSelect from '../bonuses/bonusSelect'
+import snakeCatchesBonusEvent from '../events/snakeCatchesBonusEvent'
+import { snakeCatchesFoodEvent } from '../events/snakeCatchesFoodEvent'
+import setObstacleParams from '../obstacles/setObstacleParams'
+import moveSnake from '../snake/moveSnake'
 /**
  *  Управляет игрой:
  *      - если игра прервана, ничего не исполняется
@@ -18,11 +19,11 @@ import moveSnake from "../snake/moveSnake";
  *      - изменяются, если предусмотрено, координаты бонусов
  */
 function playLevel() {
-  // setBonusParams();
-  setObstacleParams(600);
-  moveSnake();
-  snakeCatchesFoodEvent();
-  snakeCatchesBonusEvent();
+  bonusSelect()
+  setObstacleParams(600)
+  moveSnake()
+  snakeCatchesFoodEvent()
+  snakeCatchesBonusEvent()
 }
 
-export default playLevel;
+export default playLevel
