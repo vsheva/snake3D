@@ -1,12 +1,12 @@
 import SnakeEyelidsGeometry from './SnakeEyelidsGeometry'
-import { snakeCONFIG } from '../../../../../config/snakeConfig'
+import { snakeCONFIG } from '../../../../../config/snakeConfig/snakeCONFIG'
 function SnakeEyelids() {
   return (
     <mesh receiveShadow castShadow>
       <SnakeEyelidsGeometry />
       <meshStandardMaterial
-        color={snakeCONFIG.snakeSecondCOLOR}
-        opacity={snakeCONFIG.snakeOPACITY}
+        color={snakeCONFIG.colors.snakeSecondCOLOR}
+        opacity={snakeCONFIG.opacity}
         transparent
       />
     </mesh>

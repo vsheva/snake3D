@@ -1,12 +1,12 @@
 import SnakeHeadBackGeometry from './SnakeHeadBackGeometry'
-import { snakeCONFIG } from '../../../../../config/snakeConfig'
+import { snakeCONFIG } from '../../../../../config/snakeConfig/snakeCONFIG'
 function SnakeHeadBack() {
   return (
     <mesh receiveShadow castShadow>
       <SnakeHeadBackGeometry />
       <meshStandardMaterial
-        color={snakeCONFIG.snakeFirstCOLOR}
-        opacity={snakeCONFIG.snakeOPACITY}
+        color={snakeCONFIG.colors.snakeFirstCOLOR}
+        opacity={snakeCONFIG.opacity}
         transparent
       />
     </mesh>

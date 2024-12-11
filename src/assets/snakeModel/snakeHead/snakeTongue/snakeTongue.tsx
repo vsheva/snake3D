@@ -1,15 +1,14 @@
-import { snakeCONFIG } from '../../../../config/snakeConfig'
-import { GeometryProps } from '../../../../types/threeTypes'
+import { snakeCONFIG } from '../../../../config/snakeConfig/snakeCONFIG'
 import SnakeTongueGeometry from './SnakeTongueGeometry'
 import { DoubleSide } from 'three'
-function SnakeTongue(props: GeometryProps) {
+function SnakeTongue() {
   return (
-    <mesh {...props} receiveShadow castShadow>
+    <mesh {...snakeCONFIG.head.tongue} receiveShadow castShadow>
       <SnakeTongueGeometry />
       <meshStandardMaterial
-        color={snakeCONFIG.snakeMOUTH.tongue.color}
+        color={snakeCONFIG.colors.snakeThirdCOLOR}
         side={DoubleSide}
-        opacity={snakeCONFIG.snakeOPACITY}
+        opacity={snakeCONFIG.opacity}
         transparent
       />
     </mesh>

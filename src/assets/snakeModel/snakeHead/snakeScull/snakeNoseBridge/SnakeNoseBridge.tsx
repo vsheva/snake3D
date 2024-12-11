@@ -1,4 +1,4 @@
-import { snakeCONFIG } from '../../../../../config/snakeConfig'
+import { snakeCONFIG } from '../../../../../config/snakeConfig/snakeCONFIG'
 import SnakeNoseBridgeGeometry from './SnakeNoseBridgeGeometry'
 
 function SnakeNoseBridge() {
@@ -6,8 +6,8 @@ function SnakeNoseBridge() {
     <mesh receiveShadow castShadow>
       <SnakeNoseBridgeGeometry />
       <meshStandardMaterial
-        color={snakeCONFIG.snakeFirstCOLOR}
-        opacity={snakeCONFIG.snakeOPACITY}
+        color={snakeCONFIG.colors.snakeFirstCOLOR}
+        opacity={snakeCONFIG.opacity}
         transparent
       />
     </mesh>

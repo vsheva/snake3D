@@ -1,0 +1,9 @@
+.game-info {
+  color: #b8c6dc;
+  font-size: 3vmin;
+  font-weight: 500;
+  padding: 2vmin 1vmin;
+  display: flex;
+  justify-content: space-between;
+  /* z-index: 100; */
+}
