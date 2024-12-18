@@ -5,8 +5,9 @@ type positionCounter = {
   counterY: number
 }
 
-export const setSnakePosition = (props: positionCounter) => {
+export const setSnakePosition = (props: positionCounter): number[] => {
   let { counterX, counterY } = props
+
   if (Math.abs(counterX) > 1) {
     setSnakeHeadParams({
       ...getSnakeHeadParams(),
@@ -27,4 +28,6 @@ export const setSnakePosition = (props: positionCounter) => {
     })
     counterY = 0
   }
+
+  return [counterX, counterY]
 }
