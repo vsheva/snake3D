@@ -10,6 +10,7 @@ import {
   setSnakeHeadParams,
 } from '../engine/snake/snake'
 import { setSnakePosition } from '../engine/snake/setSnakePosition'
+import { snakeANIMATION } from '../config/snakeConfig/snakeANIMATION/snakeAnimation'
 import getSnakeMoveDirection from '../engine/snake/getSnakeMoveDirection'
 import { GeometryProps } from '../types/threeTypes'
 import { AnimationProps } from '../types/animationTypes'
@@ -28,6 +29,7 @@ export const Snake = () => {
   let doubleSide = 1
   let dta = 0
   let positionHeadAnimX = 0
+  let positionHeadAnimY = 0
   let tailAnimationQueue: AnimationProps[] = []
   let tailAnimationCounter = 0
   let headAnimationQueue: AnimationProps[] = []
@@ -54,6 +56,7 @@ export const Snake = () => {
     'rotation-z': 0,
     scale: 1,
   }
+  const { moveSpeed, waveAmplitude } = snakeANIMATION
   let isTailAnimating = false
   const setIsTailAnimating = (tailAnimating: boolean) => {
     isTailAnimating = tailAnimating
@@ -72,8 +75,8 @@ export const Snake = () => {
     }
     let currentStepHeadX = getSnakeHeadParams().snakeHeadStepX
     let currentStepHeadY = getSnakeHeadParams().snakeHeadStepY
-    counterHeadX = counterHeadX + currentStepHeadX * delta
-    counterHeadY = counterHeadY + currentStepHeadY * delta
+    counterHeadX = counterHeadX + currentStepHeadX * delta * moveSpeed
+    counterHeadY = counterHeadY + currentStepHeadY * delta * moveSpeed
     ;[counterHeadX, counterHeadY] = setSnakePosition({
       counterX: counterHeadX,
       counterY: counterHeadY,
@@ -156,8 +159,8 @@ export const Snake = () => {
     if (previousStepHeadY === 0 && currentStepHeadY === 1) rotationHeadZ = 0
     previousStepHeadX = currentStepHeadX
     previousStepHeadY = currentStepHeadY
-    positionHeadX = positionHeadX + currentStepHeadX * delta
-    positionHeadY = positionHeadY + currentStepHeadY * delta
+    positionHeadX = positionHeadX + currentStepHeadX * delta * moveSpeed
+    positionHeadY = positionHeadY + currentStepHeadY * delta * moveSpeed
     // if (isHeadAnimating && headAnimationQueue.length > 0) {
     //   let { position, rotation, scale } = snakeHeadAnimation(
     //     headAnimationQueue[0].name,
@@ -201,12 +204,23 @@ export const Snake = () => {
     //   headRef.current.scale.set(xxx_head, yyy_head, zzz_head)
     // }
     if (checkTimerWorking()) {
-      if (counterHeadX === 0 && currentStepHeadY > 0) {
+      if (counterHeadX === 0 && currentStepHeadX === 0) {
         side = counterHeadY === 0 ? side * -1 : side
-        dta = side > 0 ? counterHeadY : 1 - counterHeadY
+        dta = side > 0 ? Math.abs(counterHeadY) : 1 - Math.abs(counterHeadY)
         doubleSide =
-          counterHeadY === 0 && Math.round(dta) === 0 ? doubleSide * -1 : doubleSide
-        positionHeadAnimX = (doubleSide * Math.sin(dta)) / 4
+          Math.abs(counterHeadY) === 0 && Math.round(dta) === 0
+            ? doubleSide * -1
+            : doubleSide
+        positionHeadAnimX = doubleSide * Math.sin(dta) * waveAmplitude
+      }
+      if (counterHeadY === 0 && currentStepHeadY === 0) {
+        side = counterHeadX === 0 ? side * -1 : side
+        dta = side > 0 ? Math.abs(counterHeadX) : 1 - Math.abs(counterHeadX)
+        doubleSide =
+          Math.abs(counterHeadX) === 0 && Math.round(dta) === 0
+            ? doubleSide * -1
+            : doubleSide
+        positionHeadAnimY = doubleSide * Math.sin(dta) * waveAmplitude
       }
     }
     // if (counterHeadY === 0) {
@@ -214,7 +228,11 @@ export const Snake = () => {
     //   positionHeadY = (side * Math.sin(counterHeadX)) / 4
     // }
     if (headRef.current) {
-      headRef.current.position.set(positionHeadX + positionHeadAnimX, positionHeadY, 0)
+      headRef.current.position.set(
+        positionHeadX + positionHeadAnimX,
+        positionHeadY + positionHeadAnimY,
+        0
+      )
       headRef.current.rotation.set(0, 0, rotationHeadZ)
     }
 
