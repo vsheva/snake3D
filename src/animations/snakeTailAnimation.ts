@@ -1,7 +1,7 @@
-import { AnimationStepProps } from '../types/animationTypes'
+import { AnimationProps } from '../types/animationTypes'
 
-export const snakeTailAnimation = (name: string, step: number): AnimationStepProps => {
-  const animations: AnimationStepProps[] = [
+export const snakeTailAnimation = (name: string, step: number): AnimationProps => {
+  const animations: AnimationProps[] = [
     {
       name: 'turn-right',
       step: 0,
@@ -269,7 +269,7 @@ export const snakeTailAnimation = (name: string, step: number): AnimationStepPro
       scale: [1, 1, 1],
     },
   ]
-  const output: AnimationStepProps = animations.filter(
+  const output: AnimationProps = animations.filter(
     (animation) => animation.name === name && animation.step === step
   )[0]
 
