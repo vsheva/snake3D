@@ -7,5 +7,5 @@ export const cameraCONFIG: CameraProps = {
   aspect: window.innerWidth / window.innerHeight,
   position: [0, -25, 25],
   rotation: [0.8, 0, 0],
-  zoom: 2,
+  zoom: 3,
 }
