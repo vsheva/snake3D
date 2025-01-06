@@ -93,6 +93,9 @@ export const Snake = () => {
       rotation: rotationTail,
       scale: scaleTail,
     } = getSnakeTailTransitionProps()
+    if (tailAnimationCounter === 0 && tailAnimationQueue.length > 0) {
+      setIsTailAnimating(true)
+    }
     // if (headAnimationCounter === 0 && headAnimationQueue.length > 0) {
     //   setIsHeadAnimating(true)
     // }
@@ -125,7 +128,10 @@ export const Snake = () => {
         // positionHeadY++
         // positionHead[1]++
         counterHeadX = 0
-        // tailAnimationQueue.push({ name: 'turn-right', step: 18 })
+        tailAnimationQueue.shift()
+        tailAnimationCounter = 0
+        tailAnimationQueue.push({ name: 'leftUp', step: 18 })
+        isTailAnimating = true
         // headAnimationQueue.push({ name: 'leftUp', step: 21 })
       }
       // leftDown
@@ -139,7 +145,10 @@ export const Snake = () => {
         // positionHead[1]--
         // positionHeadY--
         counterHeadX = 0
-        // tailAnimationQueue.push({ name: 'turn-left', step: 18 })
+        tailAnimationQueue.shift()
+        tailAnimationCounter = 0
+        tailAnimationQueue.push({ name: 'leftDown', step: 18 })
+        isTailAnimating = true
         // headAnimationQueue.push({ name: 'turn-left', step: 18 })
       }
       // rightUp
@@ -153,7 +162,10 @@ export const Snake = () => {
         // positionHeadY++
         // positionHead[1]++
         counterHeadX = 0
-        // tailAnimationQueue.push({ name: 'turn-left', step: 18 })
+        tailAnimationQueue.shift()
+        tailAnimationCounter = 0
+        tailAnimationQueue.push({ name: 'rightUp', step: 18 })
+        isTailAnimating = true
         // headAnimationQueue.push({ name: 'rightUp', step: 21 })
       }
       // rightDown
@@ -167,7 +179,10 @@ export const Snake = () => {
         // positionHeadY--
         // positionHead[1]--
         counterHeadX = 0
-        // tailAnimationQueue.push({ name: 'turn-right', step: 18 })
+        tailAnimationQueue.shift()
+        tailAnimationCounter = 0
+        tailAnimationQueue.push({ name: 'rightDown', step: 18 })
+        isTailAnimating = true
         // headAnimationQueue.push({ name: 'turn-right', step: 18 })
       }
       // upRight
@@ -182,7 +197,10 @@ export const Snake = () => {
         // positionHeadX++
         // positionHead[0]++
         counterHeadY = 0
-        // tailAnimationQueue.push({ name: 'turn-right', step: 18 })
+        tailAnimationQueue.shift()
+        tailAnimationCounter = 0
+        tailAnimationQueue.push({ name: 'upRight', step: 18 })
+        isTailAnimating = true
         // headAnimationQueue.push({ name: 'upRight', step: 21 })
       }
       // upLeft
@@ -196,7 +214,10 @@ export const Snake = () => {
         // positionHeadX--
         // positionHead[0]--
         counterHeadY = 0
-        // tailAnimationQueue.push({ name: 'turn-left', step: 18 })
+        tailAnimationQueue.shift()
+        tailAnimationCounter = 0
+        tailAnimationQueue.push({ name: 'upLeft', step: 18 })
+        isTailAnimating = true
         // headAnimationQueue.push({ name: 'upLeft', step: 21 })
       }
       // downRight
@@ -210,7 +231,10 @@ export const Snake = () => {
         // positionHeadX++
         // positionHead[0]++
         counterHeadY = 0
-        // tailAnimationQueue.push({ name: 'turn-left', step: 18 })
+        tailAnimationQueue.shift()
+        tailAnimationCounter = 0
+        tailAnimationQueue.push({ name: 'downRight', step: 18 })
+        isTailAnimating = true
         // headAnimationQueue.push({ name: 'turn-left', step: 18 })
       }
       // downLeft
@@ -224,7 +248,10 @@ export const Snake = () => {
         // positionHeadX--
         // positionHead[0]--
         counterHeadY = 0
-        // tailAnimationQueue.push({ name: 'turn-right', step: 18 })
+        tailAnimationQueue.shift()
+        tailAnimationCounter = 0
+        tailAnimationQueue.push({ name: 'downLeft', step: 18 })
+        isTailAnimating = true
         // headAnimationQueue.push({ name: 'turn-right', step: 18 })
       }
       if (previousStepHeadX === 0 && currentStepHeadX === 1) rotationHeadZ = 11
@@ -306,6 +333,13 @@ export const Snake = () => {
           positionHeadAnimY = doubleSide * Math.sin(dta) * waveAmplitude
           positionHeadAnimX = 0
         }
+        if (currentStepHeadX === 0) {
+          tailMove[0] = positionHeadAnimX * tailWaves[0]
+          tailMove[1] = positionHeadAnimY * tailWaves[1]
+        } else {
+          tailMove[0] = positionHeadAnimY * tailWaves[1]
+          tailMove[1] = positionHeadAnimX * tailWaves[0]
+        }
         // }
         if (headRef.current) {
           // headRef.current.position.set(
@@ -334,20 +368,53 @@ export const Snake = () => {
         //   rotation: [0, 0, rotationHeadZ],
         //   scale: [0, 0, 0],
         // })
-        if (currentStepHeadX === 0) {
-          tailMove[0] = positionHeadAnimX * tailWaves[0]
-          tailMove[1] = positionHeadAnimY * tailWaves[1]
-        } else {
-          tailMove[0] = positionHeadAnimY * tailWaves[1]
-          tailMove[1] = positionHeadAnimX * tailWaves[0]
-        }
+
         if (tailRef.current) {
-          tailRef.current.position.set(
-            positionTail[0] + tailMove[0],
-            positionTail[1] + tailMove[1],
-            0
-          )
-          tailRef.current.rotation.set(0, 0, rotationTail[2])
+          if (isTailAnimating && tailAnimationQueue.length > 0) {
+            let { position, rotation, scale } = snakeTailAnimation(
+              tailAnimationQueue[0].name,
+              tailAnimationCounter
+            )
+            x_tail = position[0]
+            y_tail = position[1]
+            z_tail = position[2]
+            xx_tail = rotation[0]
+            yy_tail = rotation[1]
+            zz_tail = rotation[2]
+            xxx_tail = scale[0]
+            yyy_tail = scale[1]
+            zzz_tail = scale[2]
+            tailAnimationCounter++
+            if (tailAnimationCounter > tailAnimationQueue[0].step) {
+              tailAnimationQueue.shift()
+              tailAnimationCounter = 0
+              setIsTailAnimating(false)
+            }
+            tailRef.current.position.set(
+              x_tail + tailMove[0],
+              y_tail + tailMove[1],
+              z_tail
+            )
+            tailRef.current.rotation.set(xx_tail, yy_tail, zz_tail)
+            tailRef.current.scale.set(xxx_tail, yyy_tail, zzz_tail)
+            // setSnakeTailTransitionProps({
+            //   position: [x_tail, y_tail, z_tail],
+            //   rotation: [xx_tail, yy_tail, zz_tail],
+            //   scale: [xxx_tail, yyy_tail, zzz_tail],
+            // })
+          } else {
+            tailRef.current.position.set(
+              positionTail[0] + tailMove[0],
+              positionTail[1] + tailMove[1],
+              0
+            )
+            tailRef.current.rotation.set(0, 0, rotationTail[2])
+            // setSnakeTailTransitionProps({
+            //   position: [positionTail[0], positionTail[1], 0],
+            //   rotation: [0, 0, rotationTail[2]],
+            //   scale: [1, 1, 1],
+            // })
+          }
           // tailRef.current.scale.set(xxx_tail, yyy_tail, zzz_tail)
           // tailProps.position = new THREE.Vector3(
           //   -positionHeadAnimX,
@@ -355,11 +422,6 @@ export const Snake = () => {
           //   0
           // )
         }
-        setSnakeTailTransitionProps({
-          position: [positionTail[0], positionTail[1], 0],
-          rotation: [0, 0, rotationTail[2]],
-          scale: [0, 0, 0],
-        })
       }
       // if (counterHeadY === 0) {
       //   side = counterHeadX === 0 ? side * -1 : side
@@ -368,8 +430,6 @@ export const Snake = () => {
     }
     /********************** TAIL *************************/
 
-    // if (tailAnimationCounter === 0 && tailAnimationQueue.length > 0) {
-    //   setIsTailAnimating(true)
     // }
     // let currentStepTailX = previousStepTailX
     // let currentStepTailY = previousStepTailY
@@ -411,27 +471,7 @@ export const Snake = () => {
     // positionTailX = positionTailX + currentStepTailX * delta
     // positionTailY = positionTailY + currentStepTailY * delta
 
-    //   if (isTailAnimating && tailAnimationQueue.length > 0) {
-    //     let { position, rotation, scale } = snakeTailAnimation(
-    //       tailAnimationQueue[0].name,
-    //       tailAnimationCounter
-    //     )
-    //     x_tail = position[0]
-    //     y_tail = position[1]
-    //     z_tail = position[2]
-    //     xx_tail = rotation[0]
-    //     yy_tail = rotation[1]
-    //     zz_tail = rotation[2]
-    //     xxx_tail = scale[0]
-    //     yyy_tail = scale[1]
-    //     zzz_tail = scale[2]
-    //     tailAnimationCounter++
-    //     if (tailAnimationCounter > tailAnimationQueue[0].step) {
-    //       tailAnimationQueue.shift()
-    //       tailAnimationCounter = 0
-    //       setIsTailAnimating(false)
-    //     }
-    //   }
+    //
   })
 
   return (
