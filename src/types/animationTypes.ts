@@ -12,3 +12,10 @@ export interface AnimationStep {
 }
 
 export interface AnimationProps extends AnimationStep, AnimationStepProps {}
+
+export type snakeSteps = {
+  previousStepX: number
+  previousStepY: number
+  currentStepX: number
+  currentStepY: number
+}
