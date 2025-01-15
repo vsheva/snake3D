@@ -10,6 +10,7 @@ import * as HEAD from '../animations/snakeAnimation/headAnimations/snakeHeadProp
 import { getHeadWave } from '../animations/snakeAnimation/headAnimations/snakeHeadWaves'
 import { getTailMove } from '../animations/snakeAnimation/tailAnimations/snakeTailWaves'
 import * as TAIL from '../animations/snakeAnimation/tailAnimations/snakeTailAnimationSet'
+import SnakeBodyUnit from '../assets/snakeModel/snakeBody/snakeBodyUnit'
 
 export const Snake = () => {
   const headRef = useRef<THREE.Group>(null)
@@ -52,7 +53,7 @@ export const Snake = () => {
   return (
     <group ref={headRef}>
       <SnakeHead />
-      {/*<SnakeBodyUnit /> */}
+      {/* <SnakeBodyUnit /> */}
       <group ref={tailRef}>
         <SnakeTail {...tailProps} />
       </group>

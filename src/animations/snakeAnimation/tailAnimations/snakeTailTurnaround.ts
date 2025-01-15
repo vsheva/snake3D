@@ -26,11 +26,17 @@ export const snakeTailTurnaround = (steps: snakeSteps) => {
     setTailWavesAmplitude(steps, [waveAmplitude, 0])
     TAIL.setTailAnimatingQueue('rightDown')
   }
-  if (previousStepY === 1 && currentStepY === 0 && currentStepX === 1) {
+  if (
+    (previousStepY === 1 && currentStepY === 0 && currentStepX === 1) ||
+    (previousStepX === 0 && previousStepY === 0 && currentStepX === 1)
+  ) {
     setTailWavesAmplitude(steps, [0, waveAmplitude])
     TAIL.setTailAnimatingQueue('upRight')
   }
-  if (previousStepY === 1 && currentStepY === 0 && currentStepX === -1) {
+  if (
+    (previousStepY === 1 && currentStepY === 0 && currentStepX === -1) ||
+    (previousStepX === 0 && previousStepY === 0 && currentStepX === -1)
+  ) {
     setTailWavesAmplitude(steps, [0, -waveAmplitude])
     TAIL.setTailAnimatingQueue('upLeft')
   }
