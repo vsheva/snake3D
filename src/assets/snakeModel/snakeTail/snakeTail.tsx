@@ -2,9 +2,9 @@ import { GeometryProps } from '../../../types/threeTypes'
 import SnakeTailGeometry from './SnakeTailGeometry'
 import { Vector3 } from 'three'
 import { snakeCONFIG } from '../../../config/snakeConfig/snakeCONFIG'
-function SnakeTail(props: GeometryProps) {
+function SnakeTail() {
   return (
-    <group {...props}>
+    <>
       <mesh {...snakeCONFIG.tail} receiveShadow castShadow>
         <SnakeTailGeometry />
         <meshStandardMaterial
@@ -13,7 +13,7 @@ function SnakeTail(props: GeometryProps) {
           transparent
         />
       </mesh>
-    </group>
+    </>
   )
 }
 
