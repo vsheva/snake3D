@@ -8,8 +8,8 @@ export const snakeBodyWaves = () => {
   const headWave = getHeadWave()
   snakeLength.forEach((_, index) => {
     bodyWaves.push([
-      -headWave[0] * Math.sin(index * 1.57),
-      -headWave[1] * Math.sin(index * 1.57),
+      headWave[0] * Math.sin(index * 1.57),
+      headWave[1] * Math.sin(index * 1.57),
     ])
   })
 }
