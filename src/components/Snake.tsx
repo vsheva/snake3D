@@ -10,8 +10,9 @@ import { getHeadWave } from '../animations/snakeAnimation/headAnimations/snakeHe
 import { getTailMove } from '../animations/snakeAnimation/tailAnimations/snakeTailWaves'
 import * as TAIL from '../animations/snakeAnimation/tailAnimations/snakeTailAnimationSet'
 import SnakeBodyUnit from '../assets/snakeModel/snakeBody/snakeBodyUnit'
+import { getBodyWaves } from '../animations/snakeAnimation/bodyAnimations/snakeBodyWaves'
 
-const snakeLength: number[] = [1, 2, 3, 4, 5]
+export const snakeLength: number[] = [1, 2, 3, 4]
 
 export const Snake = () => {
   const headRef = useRef<THREE.Group>(null)
@@ -32,8 +33,13 @@ export const Snake = () => {
       }
       snakeLength.forEach((_, index) => {
         if (bodyRef[index].current) {
-          bodyRef[index].current.position.set(0, -index - 2 * (index % 2), 0)
-          bodyRef[index].current.rotation.set(0, 0, 3.14 * (index % 2))
+          const positionSet = index % 2 !== 0 ? [0, -index] : [-0.95, -(index + 1)]
+          bodyRef[index].current.position.set(
+            positionSet[0] + getBodyWaves()[index][0],
+            positionSet[1] + getBodyWaves()[index][1],
+            0
+          )
+          bodyRef[index].current.rotation.set(0, 0, index % 2 === 0 ? Math.PI / 2 : 0)
         }
       })
       if (tailRef.current) {
@@ -57,7 +63,7 @@ export const Snake = () => {
     <group ref={headRef}>
       <SnakeHead />
       {snakeLength.map((_, index) => (
-        <group ref={bodyRef[index]}>
+        <group key={Math.random()} ref={bodyRef[index]}>
           <SnakeBodyUnit />
         </group>
       ))}
