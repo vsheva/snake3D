@@ -8,7 +8,8 @@ const headWave = [0, 0]
 let side = 1
 let doubleSide = 1
 let dta = 0
-export const setHeadWave = (steps: snakeSteps) => {
+
+export const snakeHeadWaves = (steps: snakeSteps) => {
   const [counterHeadX, counterHeadY] = getCounterHead()
   const { currentStepX, currentStepY } = steps
   const { waveAmplitude } = snakeANIMATION

@@ -1,4 +1,4 @@
 export const snakeTailANIMATION = {
-  waveAmplitude: 2,
+  waveAmplitude: 1.57,
   steps: 18,
 }
