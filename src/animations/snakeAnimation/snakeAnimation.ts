@@ -29,7 +29,7 @@ export const snakeAnimation = (delta: number) => {
     previousStepY = snakeSteps.currentStepY
     snakeHeadMoving(snakeSteps, delta)
     snakeHeadWaves(snakeSteps)
-    snakeBodyWaves()
+    snakeBodyWaves(snakeSteps)
     snakeTailWaves(snakeSteps)
   }
 }
