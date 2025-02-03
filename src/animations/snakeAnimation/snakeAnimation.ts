@@ -13,13 +13,14 @@ let previousStepX = 0
 let previousStepY = 0
 
 export const snakeAnimation = (delta: number) => {
+  let snakeSteps = {
+    previousStepX,
+    previousStepY,
+    currentStepX: previousStepX,
+    currentStepY: previousStepY,
+  }
   if (!checkTimerStep()) {
-    const snakeSteps = snakeStepSetting({
-      previousStepX,
-      previousStepY,
-      currentStepX: previousStepX,
-      currentStepY: previousStepY,
-    })
+    snakeSteps = snakeStepSetting(snakeSteps)
     setTailWavesAmplitude(snakeSteps)
     snakeHeadLocation(snakeSteps, delta)
     snakeHeadTurnaround(snakeSteps)
@@ -32,4 +33,5 @@ export const snakeAnimation = (delta: number) => {
     snakeBodyWaves(snakeSteps)
     snakeTailWaves(snakeSteps)
   }
+  return snakeSteps
 }

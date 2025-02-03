@@ -1,7 +1,7 @@
-import { snakeANIMATION } from '../../../config/snakeConfig/snakeANIMATION/snakeANIMATION'
 import { setSnakePosition } from '../../../engine/snake/setSnakePosition'
 import checkTimerStep from '../../../engine/time/checkTimerStep'
 import { snakeSteps } from '../../../types/animationTypes'
+import { getSnakeSpeed } from '../snakeSpeedSetting'
 
 let counterHeadX = 0
 let counterHeadY = 0
@@ -9,7 +9,8 @@ let counterHeadY = 0
 export const snakeHeadLocation = (steps: snakeSteps, delta: number) => {
   const { previousStepX, previousStepY, currentStepX, currentStepY } = steps
   if (!checkTimerStep()) {
-    const { moveSpeed } = snakeANIMATION
+    // const { moveSpeed } = snakeANIMATION
+    const moveSpeed = getSnakeSpeed()
     counterHeadX = counterHeadX + currentStepX * delta * moveSpeed
     counterHeadY = counterHeadY + currentStepY * delta * moveSpeed
     ;[counterHeadX, counterHeadY] = setSnakePosition({
