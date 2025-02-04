@@ -12,8 +12,9 @@ import SnakeBodyUnit from '../assets/snakeModel/snakeBody/snakeBodyUnit'
 import { checkTimerWorking } from '../engine/time/isTimer'
 import { useControls } from 'leva'
 import { changeSnakeSpeed } from '../animations/snakeAnimation/snakeSpeedSetting'
+import { getBodyTurnaround } from '../animations/snakeAnimation/bodyAnimations/snakeBodyTurnaround'
 
-export const snakeLength: number[] = [1, 2, 3, 4]
+export const snakeLength: number[] = [1, 2]
 
 export const Snake = () => {
   const headRef = useRef<THREE.Group>(null)
@@ -33,7 +34,7 @@ export const Snake = () => {
   changeSnakeSpeed(snakeSpeed)
   useFrame(({ clock }, delta) => {
     const snakeSteps = snakeAnimation(delta)
-    tailGap = snakeLength.length - 2 - 0.1
+    tailGap = snakeLength.length - 2.05
     if (!checkTimerStep()) {
       snakeLength.forEach((_, index) => {
         const waveAmplitude = amplitude
@@ -51,11 +52,15 @@ export const Snake = () => {
           headRef.current.rotation.set(0, 0, HEAD.getRotationHead()[2])
         }
         if (bodyRef[index].current && index > 0 && index < snakeLength.length - 1) {
-          bodyRef[index].current.position.set(
-            positionSet[0] + offset,
-            positionSet[1] + 1,
-            0
-          )
+          if (getBodyTurnaround() !== index) {
+            bodyRef[index].current.position.set(
+              positionSet[0] + offset,
+              positionSet[1] + 1,
+              0
+            )
+          } else {
+            bodyRef[index].current.position.set(positionSet[0], positionSet[1] + 0.95, 0)
+          }
           bodyRef[index].current.rotation.set(0, 0, index % 2 === 0 ? Math.PI / 2 : 0)
         }
         if (tailRef.current && index === snakeLength.length - 1) {

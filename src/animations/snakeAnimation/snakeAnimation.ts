@@ -1,5 +1,4 @@
 import checkTimerStep from '../../engine/time/checkTimerStep'
-import { snakeBodyWaves } from './bodyAnimations/snakeBodyWaves'
 import { snakeHeadLocation } from './headAnimations/snakeHeadLocation'
 import { snakeHeadMoving } from './headAnimations/snakeHeadMoving'
 import { snakeHeadTurnaround } from './headAnimations/snakeHeadTurnaround'
@@ -30,7 +29,6 @@ export const snakeAnimation = (delta: number) => {
     previousStepY = snakeSteps.currentStepY
     snakeHeadMoving(snakeSteps, delta)
     snakeHeadWaves(snakeSteps)
-    snakeBodyWaves(snakeSteps)
     snakeTailWaves(snakeSteps)
   }
   return snakeSteps
