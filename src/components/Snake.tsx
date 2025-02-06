@@ -14,7 +14,17 @@ import { useControls } from 'leva'
 import { changeSnakeSpeed } from '../animations/snakeAnimation/snakeSpeedSetting'
 import { getBodyTurnaround } from '../animations/snakeAnimation/bodyAnimations/snakeBodyTurnaround'
 
-export const snakeLength: number[] = [1, 2]
+export const snakeLength: number[][] = [
+  [0, 0],
+  [0, 0],
+  [-1, 1],
+  [-2, 2],
+  [-2, 2],
+  [-2, 2],
+  [-1, 3],
+  [-1, 3],
+  [0, 0],
+]
 
 export const Snake = () => {
   const headRef = useRef<THREE.Group>(null)
@@ -23,10 +33,10 @@ export const Snake = () => {
   let tailGap = 0
 
   const { amplitude } = useControls('Amplitude', {
-    amplitude: { value: 0, min: 0, max: 1, step: 0.001 },
+    amplitude: { value: 0.13, min: 0, max: 1, step: 0.001 },
   })
   const { frequency } = useControls('Frequency', {
-    frequency: { value: 0, min: 0, max: 30, step: 0.1 },
+    frequency: { value: 5, min: 0, max: 30, step: 0.1 },
   })
   const { snakeSpeed } = useControls('SnakeSpeed', {
     snakeSpeed: { value: 1, min: 1, max: 10, step: 1 },
@@ -52,14 +62,27 @@ export const Snake = () => {
           headRef.current.rotation.set(0, 0, HEAD.getRotationHead()[2])
         }
         if (bodyRef[index].current && index > 0 && index < snakeLength.length - 1) {
-          if (getBodyTurnaround() !== index) {
+          if (TAIL.getIsTailAnimating() && TAIL.getTailAnimatingQueue().length > 0) {
+            if (getBodyTurnaround() === index) {
+              const { position, rotation, scale } = TAIL.setTailAnimation()
+              bodyRef[index].current.position.set(
+                positionSet[0] + snakeLength[index][0] + position[0] + getTailMove()[0],
+                positionSet[1] +
+                  snakeLength[index][1] +
+                  position[1] +
+                  0.95 +
+                  getTailMove()[1],
+                0
+              )
+              bodyRef[index].current.rotation.set(rotation[0], rotation[1], rotation[2])
+              bodyRef[index].current.scale.set(scale[0], scale[1], scale[2])
+            }
+          } else {
             bodyRef[index].current.position.set(
-              positionSet[0] + offset,
-              positionSet[1] + 1,
+              positionSet[0] + snakeLength[index][0] + offset,
+              positionSet[1] + snakeLength[index][1] + 0.95,
               0
             )
-          } else {
-            bodyRef[index].current.position.set(positionSet[0], positionSet[1] + 0.95, 0)
           }
           bodyRef[index].current.rotation.set(0, 0, index % 2 === 0 ? Math.PI / 2 : 0)
         }
