@@ -13,17 +13,27 @@ import { checkTimerWorking } from '../engine/time/isTimer'
 import { useControls } from 'leva'
 import { changeSnakeSpeed } from '../animations/snakeAnimation/snakeSpeedSetting'
 import { getBodyTurnaround } from '../animations/snakeAnimation/bodyAnimations/snakeBodyTurnaround'
+import { GeometryProps } from '../types/threeTypes'
 
 export const snakeLength: number[][] = [
-  [0, 0],
-  [0, 0],
-  [-1, 1],
-  [-2, 2],
-  [-2, 2],
-  [-2, 2],
-  [-1, 3],
-  [-1, 3],
-  [0, 0],
+  // [0, 0, 0],
+  // [0, 0, 0],
+  // [-1, 1, 0],
+  // [-2, 2, 0],
+  // [-2, 2, 0],
+  // [-2, 2, 0],
+  // [-1, 3, 0],
+  // [-1, 3, 0],
+  [0, 0, 0],
+  [0, 0, 0],
+  [0, 0, 0],
+  [0, 0, 0],
+  [0, 0, 0],
+  [0, 0, 0],
+  [0, 0, 0],
+  [0, 0, 0],
+  [0, 0, 0],
+  [0, 0, 0],
 ]
 
 export const Snake = () => {
@@ -31,6 +41,13 @@ export const Snake = () => {
   const tailRef = useRef<THREE.Group>(null)
   const bodyRef = snakeLength.map(() => useRef<THREE.Group>(null))
   let tailGap = 0
+  const snakeBodyUnit: GeometryProps = {
+    position: new THREE.Vector3(0, 0, 0),
+    'rotation-x': 0,
+    'rotation-y': 0,
+    'rotation-z': 22,
+    scale: 1,
+  }
 
   const { amplitude } = useControls('Amplitude', {
     amplitude: { value: 0.13, min: 0, max: 1, step: 0.001 },
@@ -52,7 +69,7 @@ export const Snake = () => {
         let offset = 0
         if (checkTimerWorking())
           offset = Math.sin(clock.elapsedTime * waveFrequency + index) * waveAmplitude
-        const positionSet = index % 2 !== 0 ? [0, -index] : [-0.95, -(index + 1)]
+        // const positionSet = index % 2 !== 0 ? [0, -index] : [-0.95, -(index + 1)]
         if (headRef.current && index === 0) {
           headRef.current.position.set(
             HEAD.getPositionHead()[0],
@@ -65,13 +82,13 @@ export const Snake = () => {
           if (TAIL.getIsTailAnimating() && TAIL.getTailAnimatingQueue().length > 0) {
             if (getBodyTurnaround() === index) {
               const { position, rotation, scale } = TAIL.setTailAnimation()
+
               bodyRef[index].current.position.set(
-                positionSet[0] + snakeLength[index][0] + position[0] + getTailMove()[0],
-                positionSet[1] +
-                  snakeLength[index][1] +
-                  position[1] +
-                  0.95 +
-                  getTailMove()[1],
+                /*positionSet[0] + */ snakeLength[index][0] +
+                  position[0] +
+                  getTailMove()[0],
+                /*positionSet[1] + */
+                snakeLength[index][1] + position[1] - index + +0.95 + getTailMove()[1],
                 0
               )
               bodyRef[index].current.rotation.set(rotation[0], rotation[1], rotation[2])
@@ -79,12 +96,12 @@ export const Snake = () => {
             }
           } else {
             bodyRef[index].current.position.set(
-              positionSet[0] + snakeLength[index][0] + offset,
-              positionSet[1] + snakeLength[index][1] + 0.95,
+              /*positionSet[0] + */ snakeLength[index][0] + offset,
+              /*positionSet[1] + */ snakeLength[index][1] + 0.95 - index,
               0
             )
           }
-          bodyRef[index].current.rotation.set(0, 0, index % 2 === 0 ? Math.PI / 2 : 0)
+          // bodyRef[index].current.rotation.set(0, 0, index % 2 === 0 ? Math.PI / 2 : 0)
         }
         if (tailRef.current && index === snakeLength.length - 1) {
           if (TAIL.getIsTailAnimating() && TAIL.getTailAnimatingQueue().length > 0) {
@@ -111,7 +128,7 @@ export const Snake = () => {
           <SnakeHead key={Math.random() * index} />
         ) : index < snakeLength.length - 1 ? (
           <group key={Math.random() * index} ref={bodyRef[index]}>
-            <SnakeBodyUnit />
+            <SnakeBodyUnit {...snakeBodyUnit} />
           </group>
         ) : (
           <group ref={tailRef} key={Math.random() * index}>
