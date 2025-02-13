@@ -7,6 +7,7 @@ import Wrapper from './Wrapper'
 import { useMenuStore } from '../store/menuStore'
 import { cameraCONFIG } from '../config/cameraConfig'
 import Menu from './Menu'
+import { OrbitControls } from '@react-three/drei'
 
 function Main() {
   const { isVisible } = useMenuStore()
@@ -14,7 +15,7 @@ function Main() {
   return (
     <div className='main'>
       <Wrapper>
-        {/* <LevaMonitor /> */}
+        <LevaMonitor />
         <Canvas
           dpr={[1, 2]}
           gl={{
@@ -25,6 +26,7 @@ function Main() {
           camera={{ far, near, fov, aspect, zoom }}
           shadows
         >
+          <OrbitControls />
           <Game />
         </Canvas>
         {isVisible && <Menu />}

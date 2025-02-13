@@ -8,6 +8,12 @@ export interface GeometryProps {
   scale: number
 }
 
+export type GeometryTransitionProps = {
+  position: number[]
+  rotation: number[]
+  scale: number
+}
+
 export interface CameraProps {
   fov: number
   near: number
