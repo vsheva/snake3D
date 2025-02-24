@@ -23,23 +23,24 @@ import * as SNAKE from './snake'
 function moveSnake(): void {
   if (checkTimerWorking()) {
     let snakeHead = { ...SNAKE.getSnakeHeadParams() }
+
     // console.log('move: ', snakeHead)
 
-    //   const newBodyCoord = [...SNAKE.getSnakeBodyCoord()]
+    const newBodyCoord = [...SNAKE.getSnakeBodyCoord()]
 
-    //   if (snakeHead.snakeHeadStepX !== 0 || snakeHead.snakeHeadStepY !== 0) {
-    //     snakeHead.snakeHeadCoordX += snakeHead.snakeHeadStepX
-    //     snakeHead.snakeHeadCoordY += snakeHead.snakeHeadStepY
-    //     snakeHead = allContactEvents(snakeHead)
-    //     SNAKE.setSnakeHeadParams(snakeHead)
-    //     if (checkTimerWorking() && !checkMistake()) {
-    //       breakContact()
-    //       for (let i = newBodyCoord.length - 1; i > 0; i--)
-    //         newBodyCoord[i] = newBodyCoord[i - 1]
-    //       newBodyCoord[0] = [snakeHead.snakeHeadCoordX, snakeHead.snakeHeadCoordY]
-    //       SNAKE.setSnakeBodyCoord(newBodyCoord)
-    //     } else startTimer()
-    //   }
+    if (snakeHead.snakeHeadStepX !== 0 || snakeHead.snakeHeadStepY !== 0) {
+      // snakeHead.snakeHeadCoordX += snakeHead.snakeHeadStepX
+      // snakeHead.snakeHeadCoordY += snakeHead.snakeHeadStepY
+      snakeHead = allContactEvents(snakeHead)
+      // SNAKE.setSnakeHeadParams(snakeHead)
+      // if (checkTimerWorking() && !checkMistake()) {
+      //   breakContact()
+      //   for (let i = newBodyCoord.length - 1; i > 0; i--)
+      //     newBodyCoord[i] = newBodyCoord[i - 1]
+      //   newBodyCoord[0] = [snakeHead.snakeHeadCoordX, snakeHead.snakeHeadCoordY]
+      //   SNAKE.setSnakeBodyCoord(newBodyCoord)
+      // } else startTimer()
+    }
   }
 }
 
