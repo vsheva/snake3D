@@ -1,5 +1,5 @@
 export const fieldCONFIG = {
-  fieldSIZE: 31,
+  fieldSIZE: 11,
   fieldCOLOR: '#56f854',
   fieldRATIO: 20,
 }

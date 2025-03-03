@@ -15,6 +15,7 @@ import { changeSnakeSpeed } from '../animations/snakeAnimation/snakeSpeedSetting
 import { getBodyTurnaround } from '../animations/snakeAnimation/bodyAnimations/snakeBodyTurnaround'
 import { GeometryProps } from '../types/threeTypes'
 import { getSnakeBodyCoord } from '../engine/snake/snake'
+import { checkContact } from '../engine/events/isContact'
 
 // export const snakeLength: number[][] = [
 //   // [0, 0, 0],
@@ -38,11 +39,15 @@ import { getSnakeBodyCoord } from '../engine/snake/snake'
 // ]
 
 export const Snake = () => {
-  const snakeLength = [...getSnakeBodyCoord()]
-  // snakeLength.length = snakeLength.length - 1
+  let snakeLength = [...getSnakeBodyCoord()]
+  console.log('snake: ', snakeLength)
+
+  snakeLength.length = snakeLength.length - 1
+  const bodyRef = snakeLength.map(() => useRef<THREE.Group>(null))
+
   const headRef = useRef<THREE.Group>(null)
   const tailRef = useRef<THREE.Group>(null)
-  const bodyRef = snakeLength.map(() => useRef<THREE.Group>(null))
+
   let tailGap = 0
 
   const { amplitude } = useControls('Amplitude', {
@@ -56,8 +61,9 @@ export const Snake = () => {
   })
   changeSnakeSpeed(snakeSpeed)
   useFrame(({ clock }, delta) => {
+    console.log('useFrame: ', getSnakeBodyCoord())
     const snakeSteps = snakeAnimation(delta)
-    tailGap = snakeLength.length - 3.05
+    tailGap = snakeLength.length - 2.05
     if (!checkTimerStep()) {
       snakeLength.forEach((_, index) => {
         const waveAmplitude = amplitude
@@ -73,6 +79,7 @@ export const Snake = () => {
           )
           headRef.current.rotation.set(0, 0, HEAD.getRotationHead()[2])
         }
+
         if (bodyRef[index].current && index > 0 && index < snakeLength.length - 1) {
           if (TAIL.getIsTailAnimating() && TAIL.getTailAnimatingQueue().length > 0) {
             if (getBodyTurnaround() === index) {
@@ -102,7 +109,7 @@ export const Snake = () => {
             tailRef.current.rotation.set(rotation[0], rotation[1], rotation[2])
             tailRef.current.scale.set(scale[0], scale[1], scale[2])
           } else {
-            tailRef.current.position.set(offset, -tailGap, 0)
+            tailRef.current.position.set(checkContact() ? 0 : offset, -tailGap, 0)
           }
         }
       })
