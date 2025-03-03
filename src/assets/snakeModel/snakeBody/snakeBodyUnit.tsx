@@ -2,7 +2,7 @@ import { GeometryProps } from '../../../types/threeTypes'
 import SnakeBodyGeometry from './snakeBodyGeometry'
 import { snakeCONFIG } from '../../../config/snakeConfig/snakeCONFIG'
 
-function SnakeBodyRightPrisma(props: GeometryProps) {
+function SnakeBodyRightPrisma(/*props: GeometryProps*/) {
   return (
     <mesh {...snakeCONFIG.body.right} receiveShadow castShadow>
       <SnakeBodyGeometry />
@@ -15,7 +15,7 @@ function SnakeBodyRightPrisma(props: GeometryProps) {
   )
 }
 
-function SnakeBodyLeftPrisma(props: GeometryProps) {
+function SnakeBodyLeftPrisma(/*props: GeometryProps*/) {
   return (
     <mesh {...snakeCONFIG.body.left} receiveShadow castShadow>
       <SnakeBodyGeometry />
@@ -28,11 +28,11 @@ function SnakeBodyLeftPrisma(props: GeometryProps) {
   )
 }
 
-function SnakeBodyUnit(props: GeometryProps) {
+function SnakeBodyUnit(/*props: GeometryProps*/) {
   return (
     <group>
-      <SnakeBodyRightPrisma {...props} />
-      <SnakeBodyLeftPrisma {...props} />
+      <SnakeBodyRightPrisma /*{...props}*/ />
+      <SnakeBodyLeftPrisma /*{...props}*/ />
     </group>
   )
 }

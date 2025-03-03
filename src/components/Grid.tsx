@@ -2,13 +2,15 @@ import * as THREE from 'three'
 import { useThree } from '@react-three/fiber'
 import { useEffect, useRef } from 'react'
 import { fieldCONFIG } from '../config/fieldConfig'
+import { getField } from '../engine/field/fieldPerLevel'
 
 export const Grid = () => {
   const {
     fieldCOLOR: fieldColor,
     fieldRATIO: fieldRatio,
-    fieldSIZE: fieldSize,
+    // fieldSIZE: fieldSize,
   } = fieldCONFIG
+  const fieldSize = getField()
   const { scene } = useThree()
   const gridRef = useRef<THREE.GridHelper | null>(null)
   useEffect(() => {

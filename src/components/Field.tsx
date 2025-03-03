@@ -1,4 +1,5 @@
 import { fieldCONFIG } from '../config/fieldConfig'
+import { getField } from '../engine/field/fieldPerLevel'
 import { Grid } from './Grid'
 import { Line } from './Line'
 
@@ -6,8 +7,9 @@ export const Field = () => {
   const {
     fieldCOLOR: fieldColor,
     fieldRATIO: fieldRatio,
-    fieldSIZE: fieldSize,
+    // fieldSIZE: fieldSize,
   } = fieldCONFIG
+  const fieldSize = getField()
   return (
     <group>
       <Grid />

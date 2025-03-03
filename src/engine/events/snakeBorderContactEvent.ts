@@ -35,9 +35,8 @@ function snakeBorderContactEvent(snakeHead: SnakeHeadCoord): SnakeHeadCoord {
     snakeHead.snakeHeadCoordY = getCrossesBorders() ? 1 : getField()
     borderContact = true
   }
-  if (borderContact) {
+  if (borderContact)
     snakeHead = getCrossesBorders() ? isCross(snakeHead) : isContact(snakeHead, 'border')
-  }
 
   return snakeHead
 }

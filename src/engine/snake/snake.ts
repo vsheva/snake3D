@@ -44,6 +44,7 @@ export function addSnakeBodyCoord(link: number[]): void {
 export function setSnakeBodyCoord(body: SNAKE.SnakeBodyCoord): void {
   previousSnakeBody = [...snakeBody]
   snakeBody = [...body]
+  // console.log(snakeBody)
 }
 /**
  * Возвращает параметры головы змейки
