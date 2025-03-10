@@ -1,6 +1,6 @@
 import SnakeTail from '../assets/snakeModel/snakeTail/SnakeTail'
 import SnakeHead from '../assets/snakeModel/snakeHead/SnakeHead'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import * as THREE from 'three'
 import { useFrame } from '@react-three/fiber'
 import checkTimerStep from '../engine/time/checkTimerStep'
@@ -16,34 +16,40 @@ import { getBodyTurnaround } from '../animations/snakeAnimation/bodyAnimations/s
 import { GeometryProps } from '../types/threeTypes'
 import { getSnakeBodyCoord } from '../engine/snake/snake'
 import { checkContact } from '../engine/events/isContact'
+import { getAmountOfFood } from '../engine/food/amountOfFoodPerLevel'
 
-// export const snakeLength: number[][] = [
-//   // [0, 0, 0],
-//   // [0, 0, 0],
-//   // [-1, 1, 0],
-//   // [-2, 2, 0],
-//   // [-2, 2, 0],
-//   // [-2, 2, 0],
-//   // [-1, 3, 0],
-//   // [-1, 3, 0],
-//   [0, 0, 0],
-//   // [0, 0, 0],
-//   // [0, 0, 0],
-//   // [0, 0, 0],
-//   // [0, 0, 0],
-//   // [0, 0, 0],
-//   // [0, 0, 0],
-//   // [0, 0, 0],
-//   // [0, 0, 0],
-//   [0, 0, 0],
-// ]
+export const snakeLength: number[][] = [
+  [0, 0, 0],
+  [0, 0, 0],
+  [1, 1, 0],
+  [1, 1, 0],
+  [1, 1, 0],
+  [0, 2, 0],
+  [-1, 3, 0],
+  [-1, 3, 0],
+  // [3, 3, 0],
+  // [0, 0, 0],
+  // [0, 0, 0],
+  // [0, 0, 0],
+  // [0, 0, 0],
+  // [0, 0, 0],
+  // [0, 0, 0],
+  // [0, 0, 0],
+  // [0, 0, 0],
+  //   [0, 0, 0],
+]
 
 export const Snake = () => {
-  let snakeLength = [...getSnakeBodyCoord()]
-  console.log('snake: ', snakeLength)
+  // const [snakeCoord, setSnakeCoord] = useState(getSnakeBodyCoord())
+  // let snakeLength = Array(snakeCoord.length).fill([])
 
-  snakeLength.length = snakeLength.length - 1
-  const bodyRef = snakeLength.map(() => useRef<THREE.Group>(null))
+  // console.log('Length: ', snakeLength)
+
+  const bodyRefs = useRef<Array<React.RefObject<THREE.Group>>>(
+    Array(getAmountOfFood())
+      .fill(null)
+      .map(() => useRef<THREE.Group>(null))
+  )
 
   const headRef = useRef<THREE.Group>(null)
   const tailRef = useRef<THREE.Group>(null)
@@ -61,9 +67,29 @@ export const Snake = () => {
   })
   changeSnakeSpeed(snakeSpeed)
   useFrame(({ clock }, delta) => {
-    console.log('useFrame: ', getSnakeBodyCoord())
+    // const newSnakeBody = getSnakeBodyCoord()
+    // console.log('coord: ', newSnakeBody)
+    // if (newSnakeBody.length !== snakeLength.length) {
+    //   setSnakeCoord(newSnakeBody)
+    // }
+    // snakeLength = snakeLength.map((item, index) => {
+    //   let xDelta = 0
+    //   let yDelta = 0
+    //   if (index < snakeCoord.length - 1 && index !== 0) {
+    //     xDelta = snakeCoord[index - 1][0] - snakeCoord[index][0]
+    //     yDelta = snakeCoord[index - 1][1] - snakeCoord[index][1]
+    //     if (xDelta === 0 || yDelta === 0) {
+    //       xDelta = 0
+    //       yDelta = 0
+    //     }
+    //     // console.log({ xDelta, yDelta })
+    //   }
+    //   const output = [xDelta, yDelta]
+    //   return output
+    // })
+
     const snakeSteps = snakeAnimation(delta)
-    tailGap = snakeLength.length - 2.05
+    tailGap = snakeLength.length - 3.05
     if (!checkTimerStep()) {
       snakeLength.forEach((_, index) => {
         const waveAmplitude = amplitude
@@ -71,45 +97,49 @@ export const Snake = () => {
         let offset = 0
         if (checkTimerWorking())
           offset = Math.sin(clock.elapsedTime * waveFrequency + index) * waveAmplitude
-        if (headRef.current && index === 0) {
-          headRef.current.position.set(
+        if (index === 0) {
+          headRef.current!.position.set(
             HEAD.getPositionHead()[0],
             HEAD.getPositionHead()[1],
             0
           )
-          headRef.current.rotation.set(0, 0, HEAD.getRotationHead()[2])
+          headRef.current!.rotation.set(0, 0, HEAD.getRotationHead()[2])
         }
 
-        if (bodyRef[index].current && index > 0 && index < snakeLength.length - 1) {
+        if (bodyRefs.current[index] && index > 0 && index < snakeLength.length - 2) {
           if (TAIL.getIsTailAnimating() && TAIL.getTailAnimatingQueue().length > 0) {
             if (getBodyTurnaround() === index) {
               const { position, rotation, scale } = TAIL.setTailAnimation()
 
-              bodyRef[index].current.position.set(
+              bodyRefs.current[index]!.current!.position.set(
                 snakeLength[index][0] + position[0] + 0,
 
                 snakeLength[index][1] + position[1] - index + +0.95,
                 0
               )
-              bodyRef[index].current.rotation.set(rotation[0], rotation[1], rotation[2])
-              bodyRef[index].current.scale.set(scale[0], scale[1], scale[2])
+              bodyRefs.current[index]!.current!.rotation.set(
+                rotation[0],
+                rotation[1],
+                rotation[2]
+              )
+              bodyRefs.current[index]!.current!.scale.set(scale[0], scale[1], scale[2])
             }
           } else {
-            bodyRef[index].current.position.set(
+            bodyRefs.current[index]!.current!.position.set(
               snakeLength[index][0] + offset,
               snakeLength[index][1] + 0.95 - index,
               0
             )
           }
         }
-        if (tailRef.current && index === snakeLength.length - 1) {
+        if (index === snakeLength.length - 2) {
           if (TAIL.getIsTailAnimating() && TAIL.getTailAnimatingQueue().length > 0) {
             const { position, rotation, scale } = TAIL.setTailAnimation()
-            tailRef.current.position.set(position[0], position[1] - tailGap, position[2])
-            tailRef.current.rotation.set(rotation[0], rotation[1], rotation[2])
-            tailRef.current.scale.set(scale[0], scale[1], scale[2])
+            tailRef.current!.position.set(position[0], position[1] - tailGap, position[2])
+            tailRef.current!.rotation.set(rotation[0], rotation[1], rotation[2])
+            tailRef.current!.scale.set(scale[0], scale[1], scale[2])
           } else {
-            tailRef.current.position.set(checkContact() ? 0 : offset, -tailGap, 0)
+            tailRef.current!.position.set(checkContact() ? 0 : offset, -tailGap, 0)
           }
         }
       })
@@ -121,13 +151,17 @@ export const Snake = () => {
       {snakeLength.map((_, index) =>
         index === 0 ? (
           <SnakeHead key={Math.random() * index} />
-        ) : index < snakeLength.length - 1 ? (
-          <group key={Math.random() * index} ref={bodyRef[index]}>
+        ) : index < snakeLength.length - 2 ? (
+          <group key={Math.random() * index} ref={bodyRefs.current[index]}>
             <SnakeBodyUnit /*{...snakeBodyUnit}*/ />
           </group>
-        ) : (
+        ) : index === snakeLength.length - 2 ? (
           <group ref={tailRef} key={Math.random() * index}>
             <SnakeTail />
+          </group>
+        ) : (
+          <group key={Math.random() * index}>
+            <></>
           </group>
         )
       )}
