@@ -28,9 +28,7 @@ export function Scene() {
   return (
     <>
       {/* performance && <Perf position='top-left' /> */}
-
       {/* <OrbitControls makeDefault /> */}
-
       <Snake />
       <Apple />
       <Field />

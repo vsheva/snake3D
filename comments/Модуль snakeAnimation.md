@@ -1,3 +1,32 @@
+#comments
+
+Модуль snakeAnimation - [[объектный модуль]]
+
+<span style="color:red">TODO!!!</span>
+**Модуль должен хранить массив объектов, длиной, равной текущей длине змейки. Каждый объект содержит { ==previousStepX==, ==previousStepY== }. В исходном состоянии свойства объектов равны нулю.**
+Получить текущую длину змейки можно из функции ==getSnakeBodycoord()==
+
+
+
+Функция ==snakeAnimation== -[[управляющая функция]]. 
+
+
+Функция ==snakeAnimation== перед каждым рендером определяет направление смещения выбранного элемента змейки (головы, каждого сегмента тела или хвоста).
+
+
+###### ПОЛУЧАЕТ:
+    delta -  параметр часов хука useFrame() R3F, показывающий, сколько миллисекунд
+    		прошло с момента последнего рендера
+
+###### ВЫЗЫВАЕТ:
+
+###### АЛГОРИТМ:
+
+###### ВЫЗВРАЩАЕТ:
+
+создаёт массив
+
+```js
 import checkTimerStep from '../../engine/time/checkTimerStep'
 import { snakeBodyLocation } from './bodyAnimations/snakeBodyLocation'
 import { snakeBodyMoving } from './bodyAnimations/snakeBodyMoving'
@@ -38,3 +67,4 @@ export const snakeAnimation = (delta: number) => {
 
   return snakeSteps
 }
+```
