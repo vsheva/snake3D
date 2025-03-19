@@ -4,12 +4,12 @@
 
 ## 🔋 Includes
 
-- [x] OrbitControls (Drei)
-- [x] PivotControls Gizmo (Drei)
-- [x] Debug UI with Leva
-- [x] Performance monitoring with R3F-perf
-- [x] Directional and Ambient Lights
-- [x] Shadows
+- OrbitControls (Drei)
+- PivotControls Gizmo (Drei)
+- Debug UI with Leva
+- Performance monitoring with R3F-perf
+- Directional and Ambient Lights
+- Shadows
 
 ## 🕹️ Commands
 

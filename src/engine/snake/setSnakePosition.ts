@@ -54,5 +54,6 @@ export const setSnakePosition = (props: positionCounter): number[] => {
     // } else startTimer()
     //}
   }
+
   return [counterX, counterY]
 }

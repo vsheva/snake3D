@@ -15,7 +15,7 @@ function Main() {
   return (
     <div className='main'>
       <Wrapper>
-        <LevaMonitor />
+        {/* <LevaMonitor /> */}
         <Canvas
           dpr={[1, 2]}
           gl={{
