@@ -1,5 +1,9 @@
-#comments
 # Игра **"Змейка"**
+
+
+[[Проект]] создается на локальном сервере [[VITE]], написан на TYPESCRIPT и использует библиотеку REACT-THREE-FIBER. [[README|Сборка]] выполнена [pachoclo/Francisco Jaramillo](https://github.com/pachoclo).
+
+
 
 - ## Система
     - ### VITE
@@ -21,4 +25,6 @@
 	- ### ТИПЫ
 - ## РЕСУРСЫ
 	- ### ИЗОБРАЖЕНИЯ
-	- 
+
+	
+#comments
