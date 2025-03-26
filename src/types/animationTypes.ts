@@ -19,3 +19,8 @@ export type snakeSteps = {
   currentStepX: number
   currentStepY: number
 }
+
+export type snakeDiff = {
+  diffX: number
+  diffY: number
+}

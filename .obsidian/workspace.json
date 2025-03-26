@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "comments/Модуль snakeAnimation.md",
+                "file": "comments/VITE.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Модуль snakeAnimation"
+              "title": "VITE"
             }
           }
         ]
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "comments/Модуль snakeAnimation.md",
+                "file": "comments/VITE.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Обратные ссылки для Модуль snakeAnimation"
+              "title": "Обратные ссылки для VITE"
             }
           },
           {
@@ -113,12 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "comments/Модуль snakeAnimation.md",
+                "file": "comments/VITE.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Исходящие ссылки из Модуль snakeAnimation"
+              "title": "Исходящие ссылки из VITE"
             }
           },
           {
@@ -142,13 +142,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "comments/Модуль snakeAnimation.md",
+                "file": "comments/VITE.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Структура Модуль snakeAnimation"
+              "title": "Структура VITE"
             }
           }
         ],
@@ -171,13 +171,18 @@
   },
   "active": "9e2c3f7f2bdbfb3b",
   "lastOpenFiles": [
+    "vite.config.ts.timestamp-1743012343845-39bc3ced5aa39.mjs",
+    "COMMENTS.md",
+    "README.md",
+    "comments/VITE.md",
+    "comments/Проект.md",
+    "comments/функция snakeStepSetting().md",
+    "comments/Модуль snakeAnimation.md",
     "comments/функциональный модуль.md",
     "comments/объектный модуль.md",
     "comments/хранилище.md",
     "comments/функции обработки данных.md",
-    "comments/Модуль snakeAnimation.md",
     "comments/управляющая функция.md",
-    "COMMENTS.md",
     "comments/delta.md",
     "node_modules/@babel/runtime/README.md",
     "comments",
