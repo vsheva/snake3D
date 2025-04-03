@@ -7,7 +7,7 @@ import protocolExecutor from '../engine/protocol/protocolExecutor'
 import { useMenuStore } from '../store/menuStore'
 import '../styles/wrapper.css'
 
-function Wrapper({ children }: { children: ReactNode }) {
+export function Wrapper({ children }: { children: ReactNode }) {
   const { isVisible } = useMenuStore()
   const startTouch = (e: React.TouchEvent<HTMLDivElement>) => {
     const touches = e.changedTouches
@@ -26,5 +26,3 @@ function Wrapper({ children }: { children: ReactNode }) {
     </div>
   )
 }
-
-export default Wrapper

@@ -19,15 +19,16 @@ import { getSnakeBodyCoord } from '../engine/snake/snake'
 import { checkContact } from '../engine/events/isContact'
 import { getAmountOfFood } from '../engine/food/amountOfFoodPerLevel'
 import getSnakeMoveDirection from '../engine/snake/getSnakeMoveDirection'
+import { getDiff } from '../animations/snakeAnimation/bodyAnimations/snakeDiff'
 
 export const Snake = () => {
   const [snakeCoord, setSnakeCoord] = useState(getSnakeBodyCoord())
   // console.log('coord: ', snakeCoord)
-  // const [snakeMoveDirection, setSnakeMoveDirection] = useState(getSnakeMoveDirection())
+  const [snakeMoveDirection, setSnakeMoveDirection] = useState(getSnakeMoveDirection())
   // console.log(snakeMoveDirection)
 
   let snakeLength = Array(getSnakeBodyCoord().length).fill([])
-
+  let lineSnake = Array(getSnakeBodyCoord().length).fill([])
   // console.log('Length: ', snakeLength)
 
   const bodyRefs = useRef<Array<React.RefObject<THREE.Group>>>(
@@ -52,9 +53,11 @@ export const Snake = () => {
   // })
   // changeSnakeSpeed(snakeSpeed)
   useFrame(({ clock }, delta) => {
-    // const moveDirection = getSnakeMoveDirection()
+    const moveDirection = getSnakeMoveDirection()
     const newSnakeBody = getSnakeBodyCoord()
+    // console.log(newSnakeBody)
 
+    const snakeSteps = snakeAnimation(delta)
     // let x = newSnakeBody[0][0]
     // let y = newSnakeBody[0][1]
     // lineSnake = lineSnake.map((item, index) => {
@@ -93,13 +96,17 @@ export const Snake = () => {
     // if (newSnakeBody.length !== snakeLength.length) {
     // setSnakeCoord(newSnakeBody)
     // }
-    // if (
-    //   moveDirection[0] !== snakeMoveDirection[0] ||
-    //   moveDirection[1] !== snakeMoveDirection[1]
-    // ) {
-    //   setSnakeCoord(newSnakeBody)
-    //   setSnakeMoveDirection(moveDirection)
-    // }
+    if (
+      moveDirection[0] !== snakeMoveDirection[0] ||
+      moveDirection[1] !== snakeMoveDirection[1]
+    ) {
+      // console.log(snakeAnimation(delta))
+      // snakeAnimation(delta)
+      console.log(getDiff())
+
+      setSnakeCoord(newSnakeBody)
+      setSnakeMoveDirection(moveDirection)
+    }
     // snakeLength = snakeLength.map((item, index) => {
     //   let xDelta = 0
     //   let yDelta = 0
@@ -115,7 +122,7 @@ export const Snake = () => {
     //   const output = [xDelta, yDelta]
     //   return output
     // })
-    const snakeSteps = snakeAnimation(delta)
+
     // console.log(snakeSteps)
 
     //   tailGap = snakeLength.length - 3.05
