@@ -1,4 +1,9 @@
-Файл `tsconfig.json` используется для компиляции **Vite-конфига** (`vite.config.ts`).
+
+**tsconfig.node.json**
+#comments 
+
+
+Файл `tsconfig.node.json` используется для компиляции **Vite-конфига** (`vite.config.ts`).
 
 ---
 

@@ -1,9 +1,8 @@
-import { OrbitControls } from '@react-three/drei'
 import { useControls } from 'leva'
 import { Perf } from 'r3f-perf'
 import { Field } from './Field'
 import { Environment } from './Environment'
-import { Snake } from './Snake'
+import Snake from './Snake'
 import Apple from './Apple'
 import { useFrame, useThree } from '@react-three/fiber'
 import { cameraCONFIG } from '../config/cameraConfig'
@@ -28,7 +27,7 @@ export function Scene() {
   return (
     <>
       {/* performance && <Perf position='top-left' /> */}
-      {/* <OrbitControls makeDefault /> */}
+
       <Snake />
       <Apple />
       <Field />
