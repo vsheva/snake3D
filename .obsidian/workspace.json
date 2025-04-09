@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "comments/СЦЕНУ ИГРЫ.md",
+                "file": "comments/`Snake`.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "СЦЕНУ ИГРЫ"
+              "title": "`Snake`"
             }
           }
         ]
@@ -171,9 +171,13 @@
   },
   "active": "9e2c3f7f2bdbfb3b",
   "lastOpenFiles": [
-    "comments/ФАКТИЧЕСКУЮ СЦЕНУ.md",
-    "comments/`Scene`.md",
+    "comments/ЗМЕЙКА.md",
+    "comments/АНИМИРОВАТЬ.md",
+    "comments/`Snake`.md",
+    "comments/ГОЛОВЫ.md",
+    "comments/ГРУППУ ПЕРСОНАЖЕЙ.md",
     "comments/СЦЕНУ ИГРЫ.md",
+    "comments/`Scene`.md",
     "comments/ГЛАВНЫМ КОМПОНЕНТОМ.md",
     "comments/сцена.md",
     "comments/`Game`.md",
@@ -193,10 +197,6 @@
     "comments/tsconfig.node.md",
     "comments/tsconfig.md",
     "comments/VITE.md",
-    "comments/vite.config.md",
-    "comments/Проект.md",
-    "comments/обновления игрового движка.md",
-    "comments/`setLoop`.md",
     "src/components/Snake.tsx",
     "src/components/Snake1.tsx",
     "vite.config.ts.timestamp-1743613956228-5c153496d573c.mjs",
