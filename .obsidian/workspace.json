@@ -44,7 +44,7 @@
                 "autoReveal": false
               },
               "icon": "lucide-folder-closed",
-              "title": "Файловый менеджер"
+              "title": "Files"
             }
           },
           {
@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#map",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 237.5
+    "width": 200
   },
   "right": {
     "id": "26ce452b4872e7f9",
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "comments/main.md",
+                "file": "comments/Модуль snakeAnimation.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Обратные ссылки для main"
+              "title": "Обратные ссылки для Модуль snakeAnimation"
             }
           },
           {
@@ -113,12 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "comments/main.md",
+                "file": "comments/Модуль snakeAnimation.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Исходящие ссылки из main"
+              "title": "Исходящие ссылки из Модуль snakeAnimation"
             }
           },
           {
@@ -142,13 +142,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "comments/main.md",
+                "file": "comments/Модуль snakeAnimation.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Структура main"
+              "title": "Структура Модуль snakeAnimation"
             }
           }
         ],
@@ -161,52 +161,52 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Меню быстрого перехода": false,
-      "graph:Граф": false,
-      "canvas:Создать новый холст": false,
-      "daily-notes:Сегодняшняя заметка": false,
-      "templates:Вставить шаблон": false,
-      "command-palette:Открыть палитру команд": false
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
     }
   },
   "active": "9e2c3f7f2bdbfb3b",
   "lastOpenFiles": [
-    "comments/ФАКТИЧЕСКУЮ СЦЕНУ.md",
-    "comments/`Scene`.md",
+    "comments/обновления игрового движка.md",
+    "comments/текущем уровне игры.md",
+    "comments/условия завершения игры.md",
     "comments/СЦЕНУ ИГРЫ.md",
     "comments/ГЛАВНЫМ КОМПОНЕНТОМ.md",
-    "comments/сцена.md",
-    "comments/`Game`.md",
-    "comments/компонент меню.md",
-    "comments/`Main`.md",
     "comments/компонента-оболочки.md",
     "comments/отладочная панель.md",
+    "comments/холст.md",
     "comments/ГЛАВНЫЙ ФАЙЛ.md",
-    "comments/отключается прокрутка.md",
     "comments/параметры стартового уровня.md",
-    "comments/main.md",
-    "comments/setLevelEvent.md",
     "comments/стартовый файл.md",
     "comments/index.md",
+    "comments/main.md",
     "COMMENTS.md",
-    "comments/TYPESCRIPT.md",
-    "comments/tsconfig.node.md",
-    "comments/tsconfig.md",
-    "comments/VITE.md",
-    "comments/vite.config.md",
-    "comments/Проект.md",
-    "comments/обновления игрового движка.md",
+    "comments/разрешение на запуск.md",
     "comments/`setLoop`.md",
-    "src/components/Snake.tsx",
-    "src/components/Snake1.tsx",
-    "vite.config.ts.timestamp-1743613956228-5c153496d573c.mjs",
-    "src/engine/levels/loadLevelProps.ts",
-    "vite.config.ts.timestamp-1743012343845-39bc3ced5aa39.mjs",
+    "comments/ФАКТИЧЕСКУЮ СЦЕНУ.md",
+    "comments/управления камерой.md",
+    "comments/`menuStore`.md",
+    "comments/компонент меню.md",
+    "comments/`Main`.md",
+    "README.md",
+    "comments/2025-04-09.md",
+    "comments/Модуль snakeAnimation.md",
+    "comments/функциональный модуль.md",
+    "comments/объектный модуль.md",
     "comments",
     "Новая папка",
     "out/index.html",
     "out/styles/prettify-tomorrow.css",
     "out/styles/prettify-jsdoc.css",
+    "out/styles/jsdoc-default.css",
+    "out/styles",
+    "out/scripts/prettify/prettify.js",
+    "out/scripts/prettify/lang-css.js",
+    "out/scripts/prettify/Apache-License-2.0.txt",
     "out/fonts/OpenSans-Regular-webfont.svg",
     "out/fonts/OpenSans-LightItalic-webfont.svg",
     "out/fonts/OpenSans-Light-webfont.svg",
