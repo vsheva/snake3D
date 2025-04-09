@@ -18,7 +18,7 @@ import { snakeTailTurnaround } from './tailAnimations/snakeTailTurnaround'
 
 // let previousStepX = 0
 // let previousStepY = 0
-let snakeStepsArray = [
+let snakePreviousStepsArray = [
   { previousStepX: 0, previousStepY: 0 },
   { previousStepX: 0, previousStepY: 0 },
   { previousStepX: 0, previousStepY: 0 },
@@ -31,14 +31,15 @@ export const snakeAnimation = (delta: number) => {
   //   currentStepX: previousStepX,
   //   currentStepY: previousStepY,
   // }
-  let snakeSteps = snakeStepsArray.map((step) => ({
+  let snakeSteps = snakePreviousStepsArray.map((step) => ({
     previousStepX: step.previousStepX,
     previousStepY: step.previousStepY,
     currentStepX: step.previousStepX,
     currentStepY: step.previousStepY,
   }))
+
   if (!checkTimerStep()) {
-    snakeStepsArray.forEach((_, index) => snakeBodyDiff(index))
+    snakePreviousStepsArray.forEach((_, index) => snakeBodyDiff(index))
     // console.log(snakeSteps)
     snakeSteps = snakeStepSetting(snakeSteps)
 
@@ -55,7 +56,7 @@ export const snakeAnimation = (delta: number) => {
     snakeBodyTurnaround(snakeSteps)
     snakeTailTurnaround(snakeSteps)
     */
-    snakeStepsArray = snakeSteps.map((step) => {
+    snakePreviousStepsArray = snakeSteps.map((step) => {
       step.previousStepX = step.currentStepX
       step.previousStepY = step.currentStepY
       return step

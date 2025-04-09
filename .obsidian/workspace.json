@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "comments/СЦЕНУ ИГРЫ.md",
+                "file": "comments/`Snake`.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "СЦЕНУ ИГРЫ"
+              "title": "`Snake`"
             }
           }
         ]
@@ -171,10 +171,19 @@
   },
   "active": "9e2c3f7f2bdbfb3b",
   "lastOpenFiles": [
+
     "comments/обновления игрового движка.md",
     "comments/текущем уровне игры.md",
     "comments/условия завершения игры.md",
+
+    "comments/ЗМЕЙКА.md",
+    "comments/АНИМИРОВАТЬ.md",
+    "comments/`Snake`.md",
+    "comments/ГОЛОВЫ.md",
+    "comments/ГРУППУ ПЕРСОНАЖЕЙ.md",
+
     "comments/СЦЕНУ ИГРЫ.md",
+    "comments/`Scene`.md",
     "comments/ГЛАВНЫМ КОМПОНЕНТОМ.md",
     "comments/компонента-оболочки.md",
     "comments/отладочная панель.md",
@@ -185,6 +194,7 @@
     "comments/index.md",
     "comments/main.md",
     "COMMENTS.md",
+
     "comments/разрешение на запуск.md",
     "comments/`setLoop`.md",
     "comments/ФАКТИЧЕСКУЮ СЦЕНУ.md",
@@ -197,6 +207,17 @@
     "comments/Модуль snakeAnimation.md",
     "comments/функциональный модуль.md",
     "comments/объектный модуль.md",
+
+    "comments/TYPESCRIPT.md",
+    "comments/tsconfig.node.md",
+    "comments/tsconfig.md",
+    "comments/VITE.md",
+    "src/components/Snake.tsx",
+    "src/components/Snake1.tsx",
+    "vite.config.ts.timestamp-1743613956228-5c153496d573c.mjs",
+    "src/engine/levels/loadLevelProps.ts",
+    "vite.config.ts.timestamp-1743012343845-39bc3ced5aa39.mjs",
+
     "comments",
     "Новая папка",
     "out/index.html",

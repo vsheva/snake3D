@@ -38,7 +38,7 @@ function moveSnake(): void {
 
     if (snakeHead.snakeHeadStepX !== 0 || snakeHead.snakeHeadStepY !== 0) {
       const [counterHeadX, counterHeadY] = getCounterHead()
-      // console.log({ counterHeadX, counterHeadY })
+      //console.log({ counterHeadX, counterHeadY })
 
       if (counterHeadX === 0 && counterHeadY === 0) {
         let { snakeHeadCoordX, snakeHeadCoordY, snakeHeadStepX, snakeHeadStepY } =

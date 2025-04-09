@@ -24,7 +24,8 @@ import React from 'react'`
 ##### Компонент `Snake`
 
 ```ts
-const Snake = () => {   const headRef = useRef<THREE.Group>(null)   
+const Snake = () => {   
+const headRef = useRef<THREE.Group>(null)   
 const tailRef = useRef<THREE.Group>(null)`
 ```
 - `headRef` и `tailRef` создаются для получения прямого доступа к группам, содержащим голову и хвост змеи.
