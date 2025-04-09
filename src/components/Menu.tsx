@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { useMenuStore, usePauseStore } from '../store/menuStore'
 import '../styles/menu.css'
 import { swapPause } from '../engine/events/pauseEvent'
@@ -23,4 +23,4 @@ const Menu: React.FC = () => {
   )
 }
 
-export default Menu
+export default memo(Menu)

@@ -31,12 +31,14 @@ function moveSnake(): void {
       snakeHeadStepX: SNAKE.getSnakeHeadParams().snakeHeadStepX,
       snakeHeadStepY: SNAKE.getSnakeHeadParams().snakeHeadStepY,
     }
-    // console.log(snakeHead.snakeHeadCoordX, snakeHead.snakeHeadCoordY)
+    // console.log(snakeHead)
 
     const newBodyCoord = [...SNAKE.getSnakeBodyCoord()]
+    // console.log(newBodyCoord)
 
     if (snakeHead.snakeHeadStepX !== 0 || snakeHead.snakeHeadStepY !== 0) {
       const [counterHeadX, counterHeadY] = getCounterHead()
+      // console.log({ counterHeadX, counterHeadY })
 
       if (counterHeadX === 0 && counterHeadY === 0) {
         let { snakeHeadCoordX, snakeHeadCoordY, snakeHeadStepX, snakeHeadStepY } =
@@ -57,6 +59,7 @@ function moveSnake(): void {
           for (let i = newBodyCoord.length - 1; i > 0; i--)
             newBodyCoord[i] = newBodyCoord[i - 1]
           newBodyCoord[0] = [snakeHead.snakeHeadCoordX, snakeHead.snakeHeadCoordY]
+          // console.log(newBodyCoord)
 
           SNAKE.setSnakeBodyCoord(newBodyCoord)
         } else startTimer()

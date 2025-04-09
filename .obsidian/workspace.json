@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "comments/VITE.md",
+                "file": "comments/СЦЕНУ ИГРЫ.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "VITE"
+              "title": "СЦЕНУ ИГРЫ"
             }
           }
         ]
@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tag:#map",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 237.5
   },
   "right": {
     "id": "26ce452b4872e7f9",
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "comments/VITE.md",
+                "file": "comments/main.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Обратные ссылки для VITE"
+              "title": "Обратные ссылки для main"
             }
           },
           {
@@ -113,12 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "comments/VITE.md",
+                "file": "comments/main.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Исходящие ссылки из VITE"
+              "title": "Исходящие ссылки из main"
             }
           },
           {
@@ -142,13 +142,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "comments/VITE.md",
+                "file": "comments/main.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Структура VITE"
+              "title": "Структура main"
             }
           }
         ],
@@ -171,30 +171,42 @@
   },
   "active": "9e2c3f7f2bdbfb3b",
   "lastOpenFiles": [
-    "vite.config.ts.timestamp-1743012343845-39bc3ced5aa39.mjs",
+    "comments/ФАКТИЧЕСКУЮ СЦЕНУ.md",
+    "comments/`Scene`.md",
+    "comments/СЦЕНУ ИГРЫ.md",
+    "comments/ГЛАВНЫМ КОМПОНЕНТОМ.md",
+    "comments/сцена.md",
+    "comments/`Game`.md",
+    "comments/компонент меню.md",
+    "comments/`Main`.md",
+    "comments/компонента-оболочки.md",
+    "comments/отладочная панель.md",
+    "comments/ГЛАВНЫЙ ФАЙЛ.md",
+    "comments/отключается прокрутка.md",
+    "comments/параметры стартового уровня.md",
+    "comments/main.md",
+    "comments/setLevelEvent.md",
+    "comments/стартовый файл.md",
+    "comments/index.md",
     "COMMENTS.md",
-    "README.md",
+    "comments/TYPESCRIPT.md",
+    "comments/tsconfig.node.md",
+    "comments/tsconfig.md",
     "comments/VITE.md",
+    "comments/vite.config.md",
     "comments/Проект.md",
-    "comments/функция snakeStepSetting().md",
-    "comments/Модуль snakeAnimation.md",
-    "comments/функциональный модуль.md",
-    "comments/объектный модуль.md",
-    "comments/хранилище.md",
-    "comments/функции обработки данных.md",
-    "comments/управляющая функция.md",
-    "comments/delta.md",
-    "node_modules/@babel/runtime/README.md",
+    "comments/обновления игрового движка.md",
+    "comments/`setLoop`.md",
+    "src/components/Snake.tsx",
+    "src/components/Snake1.tsx",
+    "vite.config.ts.timestamp-1743613956228-5c153496d573c.mjs",
+    "src/engine/levels/loadLevelProps.ts",
+    "vite.config.ts.timestamp-1743012343845-39bc3ced5aa39.mjs",
     "comments",
     "Новая папка",
     "out/index.html",
     "out/styles/prettify-tomorrow.css",
     "out/styles/prettify-jsdoc.css",
-    "out/styles/jsdoc-default.css",
-    "out/styles",
-    "out/scripts/prettify/prettify.js",
-    "out/scripts/prettify/lang-css.js",
-    "out/scripts/prettify/Apache-License-2.0.txt",
     "out/fonts/OpenSans-Regular-webfont.svg",
     "out/fonts/OpenSans-LightItalic-webfont.svg",
     "out/fonts/OpenSans-Light-webfont.svg",

@@ -22,7 +22,7 @@ import { setNewGame } from '../events/interruptGameEvent'
  * @param currentLevel текущий уровень игры
  * @description Задает настройки. Ставит игру на паузу.
  */
-function getLevelProps(currentLevel: number) {
+function loadLevelProps(currentLevel: number) {
   setField(+levels[currentLevel - 1].field)
   setAmountOfFood(+levels[currentLevel - 1].food)
   let extraTime = getTimePerLevel() ? getTimePerLevel() - getTimer() : 0
@@ -48,4 +48,4 @@ function getLevelProps(currentLevel: number) {
   stopTimer()
 }
 
-export default getLevelProps
+export default loadLevelProps
