@@ -43,8 +43,8 @@ function moveSnake(): void {
       if (counterHeadX === 0 && counterHeadY === 0) {
         let { snakeHeadCoordX, snakeHeadCoordY, snakeHeadStepX, snakeHeadStepY } =
           snakeHead
-        snakeHeadCoordX += snakeHeadStepX
-        snakeHeadCoordY += snakeHeadStepY
+        // snakeHeadCoordX += snakeHeadStepX
+        // snakeHeadCoordY += snakeHeadStepY
 
         snakeHead = allContactEvents({
           snakeHeadCoordX,
@@ -56,6 +56,8 @@ function moveSnake(): void {
         breakContact()
         if (checkTimerWorking() && !checkMistake()) {
           breakContact()
+          snakeHeadCoordX += snakeHeadStepX
+          snakeHeadCoordY += snakeHeadStepY
           for (let i = newBodyCoord.length - 1; i > 0; i--)
             newBodyCoord[i] = newBodyCoord[i - 1]
           newBodyCoord[0] = [snakeHead.snakeHeadCoordX, snakeHead.snakeHeadCoordY]

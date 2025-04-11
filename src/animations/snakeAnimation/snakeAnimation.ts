@@ -24,7 +24,7 @@ let snakePreviousStepsArray = [
   { previousStepX: 0, previousStepY: 0 },
 ]
 
-export const snakeAnimation = (delta: number) => {
+export const snakeAnimation = (delta: number): void => {
   // let snakeSteps = {
   //   previousStepX,
   //   previousStepY,
@@ -42,9 +42,9 @@ export const snakeAnimation = (delta: number) => {
     snakePreviousStepsArray.forEach((_, index) => snakeBodyDiff(index))
     // console.log(snakeSteps)
     snakeSteps = snakeStepSetting(snakeSteps)
-
+    snakeBodyMoving(delta)
     snakeHeadLocation(snakeSteps[0], delta)
-    const [counterHeadX, counterHeadY] = getCounterHead()
+    // const [counterHeadX, counterHeadY] = getCounterHead()
     // console.log({ counterHeadX, counterHeadY })
 
     // if (counterHeadX >= 0 && counterHeadY >= 0) moveSnake()
@@ -68,6 +68,4 @@ export const snakeAnimation = (delta: number) => {
     // snakeBodyMoving(snakeSteps, delta)
   }
   // console.log(snakeSteps)
-
-  return snakeSteps
 }

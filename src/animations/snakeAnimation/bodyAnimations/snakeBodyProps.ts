@@ -1,12 +1,15 @@
 const snakeBodyPosition: number[][] = [
   [0, 0, 0],
-  [0, 0, 0],
+  [0, -1, 0],
+  [0, -2, 0],
 ]
 const snakeBodyRotation: number[][] = [
   [0, 0, 0],
   [0, 0, 0],
+  [0, 0, 0],
 ]
 const snakeBodyScale: number[][] = [
+  [0, 0, 0],
   [0, 0, 0],
   [0, 0, 0],
 ]

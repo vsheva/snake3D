@@ -5,20 +5,41 @@ import { checkTimerWorking } from '../../../engine/time/isTimer'
 import { checkMistake } from '../../../engine/lives/isMistake'
 import { breakContact, checkContact } from '../../../engine/events/isContact'
 import { getDiff } from './snakeDiff'
+import { getSnakeBodyCoord, getSnakeHeadParams } from '../../../engine/snake/snake'
+import { getCounterHead } from '../headAnimations/snakeHeadLocation'
 
-export const snakeBodyMoving = (steps: snakeSteps, delta: number) => {
-  const positions: number[][] = Array(getSnakeUnitPosition().length).fill([0, 0, 0])
-  const { currentStepX, currentStepY } = steps
+export const snakeBodyMoving = (delta: number) => {
   const moveSpeed = getSnakeSpeed()
-  getSnakeUnitPosition().forEach((_, index) => {
-    const unitCurrentStepX = index === 0 ? currentStepX : getDiff()[0]
-    const unitCurrentStepY = index === 0 ? currentStepY : getDiff()[1]
-    positions[index][0] += unitCurrentStepX * delta * moveSpeed
-    positions[index][1] += unitCurrentStepY * delta * moveSpeed
-    positions[index][2] = 0
-    if (currentStepX === 0) positions[index][0] = Math.round(positions[index][0])
-    if (currentStepY === 0) positions[index][1] = Math.round(positions[index][1])
+  const pos = getSnakeUnitPosition().map((positions) => {
+    positions[0] += getDiff()[0].diffX * delta * moveSpeed
+    positions[1] += getDiff()[1].diffY * delta * moveSpeed
+    positions[2] = 0
+    if (getSnakeHeadParams().snakeHeadStepX === 0) positions[0] = Math.round(positions[0])
+    if (getSnakeHeadParams().snakeHeadStepY === 0) positions[1] = Math.round(positions[1])
+    return positions
   })
 
-  setSnakeUnitPosition(positions)
+  const [counterHeadX, counterHeadY] = getCounterHead()
+  if (counterHeadX === 0 && counterHeadY === 0) {
+    if (
+      getSnakeHeadParams().snakeHeadStepX !== 0 ||
+      getSnakeHeadParams().snakeHeadStepY !== 0
+    ) {
+      console.log(
+        'координаты движка: ',
+        getSnakeBodyCoord()[0],
+        getSnakeBodyCoord()[1],
+        getSnakeBodyCoord()[2]
+      )
+      console.log('смещения 3D координат: ', getDiff()[0], getDiff()[1], getDiff()[2])
+      console.log(
+        'координаты 3D змейки: ',
+        getSnakeUnitPosition()[0],
+        getSnakeUnitPosition()[1],
+        getSnakeUnitPosition()[2]
+      )
+    }
+  }
+
+  setSnakeUnitPosition(pos)
 }
