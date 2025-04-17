@@ -31,7 +31,11 @@ const Snake = () => {
 
     //**********КОНТРОЛЬ************************
 
-    // const [counterHeadX, counterHeadY] = getCounterHead()
+    const [counterHeadX, counterHeadY] = getCounterHead()
+    // const isSnakeMoving =
+    //   getSnakeHeadParams().snakeHeadStepX !== 0 ||
+    //   getSnakeHeadParams().snakeHeadStepY !== 0
+    // const zRotation = Math.sin(state.clock.elapsedTime * -2) * 0.2
     // if (counterHeadX === 0 && counterHeadY === 0) {
     //   if (
     //     getSnakeHeadParams().snakeHeadStepX !== 0 ||
@@ -54,20 +58,36 @@ const Snake = () => {
     // }
 
     //*********************************
-    if (
-      getSnakeHeadParams().snakeHeadStepX !== 0 ||
-      getSnakeHeadParams().snakeHeadStepY !== 0
-    ) {
-      snake.forEach((_, index) => {
-        if (index === 0 && headRef.current) {
-          headRef.current.rotation.z = Math.sin(state.clock.elapsedTime * -2) * 0.2
-        }
-
-        if (index === snake.length - 2 && tailRef.current) {
-          tailRef.current.rotation.z = Math.sin(state.clock.elapsedTime * 2) * 0.2
-        }
-      })
-    }
+    // if (
+    //   getSnakeHeadParams().snakeHeadStepX !== 0 ||
+    //   getSnakeHeadParams().snakeHeadStepY !== 0
+    // ) {
+    snake.forEach((_, index) => {
+      if (index === 0) {
+        headRef.current!.position.set(
+          getSnakeUnitPosition()[index][0],
+          getSnakeUnitPosition()[index][1],
+          getSnakeUnitPosition()[index][2]
+        )
+        // headRef.current!.rotation.z = isSnakeMoving ? -zRotation : 0
+      }
+      if (index > 0 && index < snake.length - 2) {
+        bodyRefs.current[index]!.current!.position.set(
+          getSnakeUnitPosition()[index][0],
+          getSnakeUnitPosition()[index][1],
+          getSnakeUnitPosition()[index][2]
+        )
+      }
+      if (index === snake.length - 2) {
+        tailRef.current!.position.set(
+          getSnakeUnitPosition()[index][0],
+          getSnakeUnitPosition()[index][1],
+          getSnakeUnitPosition()[index][2]
+        )
+        // tailRef.current!.rotation.z = isSnakeMoving ? zRotation : 0
+      }
+    })
+    // }
   })
 
   return (
@@ -81,7 +101,7 @@ const Snake = () => {
           )
         } else if (index < snake.length - 2) {
           return (
-            <group key={index} /*ref={(el) => (bodyRefs.current[index] = el)} */>
+            <group key={index} /* ref={(el) => (bodyRefs.current[index] = el)} */>
               <SnakeBodyUnit />
             </group>
           )

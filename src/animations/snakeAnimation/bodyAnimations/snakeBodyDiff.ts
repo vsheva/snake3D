@@ -11,11 +11,9 @@ function snakeBodyDiff(index: number) {
       getSnakeHeadParams().snakeHeadStepY !== 0
     )
       if (index !== 0) {
-        // console.log(index, ' : ', getSnakeBodyCoord()[index])
         diffX = getSnakeBodyCoord()[index - 1][0] - getSnakeBodyCoord()[index][0]
         diffY = getSnakeBodyCoord()[index - 1][1] - getSnakeBodyCoord()[index][1]
       } else {
-        // console.log(index, ' : ', getSnakeBodyCoord()[index])
         diffX = getSnakeHeadParams().snakeHeadStepX
         diffY = getSnakeHeadParams().snakeHeadStepY
       }

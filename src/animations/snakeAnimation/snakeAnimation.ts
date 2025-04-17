@@ -39,11 +39,10 @@ export const snakeAnimation = (delta: number): void => {
   }))
 
   if (!checkTimerStep()) {
-    snakePreviousStepsArray.forEach((_, index) => snakeBodyDiff(index))
+    snakeSteps.forEach((_, index) => snakeBodyDiff(index))
     // console.log(snakeSteps)
     snakeSteps = snakeStepSetting(snakeSteps)
-    snakeBodyMoving(delta)
-    snakeHeadLocation(snakeSteps[0], delta)
+
     // const [counterHeadX, counterHeadY] = getCounterHead()
     // console.log({ counterHeadX, counterHeadY })
 
@@ -56,6 +55,9 @@ export const snakeAnimation = (delta: number): void => {
     snakeBodyTurnaround(snakeSteps)
     snakeTailTurnaround(snakeSteps)
     */
+
+    snakeBodyMoving(delta)
+    snakeHeadMoving(snakeSteps[0], delta)
     snakePreviousStepsArray = snakeSteps.map((step) => {
       step.previousStepX = step.currentStepX
       step.previousStepY = step.currentStepY
@@ -63,8 +65,8 @@ export const snakeAnimation = (delta: number): void => {
     })
     // previousStepX = snakeSteps.currentStepX
     // previousStepY = snakeSteps.currentStepY
+    snakeHeadLocation(snakeSteps[0], delta)
 
-    snakeHeadMoving(snakeSteps[0], delta)
     // snakeBodyMoving(snakeSteps, delta)
   }
   // console.log(snakeSteps)

@@ -13,12 +13,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "comments/СЦЕНУ ИГРЫ.md",
+                "file": "comments/текущем уровне игры.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "СЦЕНУ ИГРЫ"
+              "title": "текущем уровне игры"
+            }
+          },
+          {
+            "id": "93d825c54fa9ae3e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "comments/interruptGameEvent.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "interruptGameEvent"
             }
           }
         ]
@@ -171,20 +185,24 @@
   },
   "active": "9e2c3f7f2bdbfb3b",
   "lastOpenFiles": [
+    "comments/обновления игрового движка.md",
+    "comments/условия завершения игры.md",
+    "comments/interruptGameEvent.md",
+    "comments/`setLoop`.md",
+    "comments/СЦЕНУ ИГРЫ.md",
+    "comments/`Game`.md",
+    "comments/ГЛАВНЫМ КОМПОНЕНТОМ.md",
+    "comments/ГЛАВНЫЙ ФАЙЛ.md",
+    "comments/стартовый файл.md",
+    "COMMENTS.md",
     "vite.config.ts.timestamp-1744277405243-aa2303c3f3a9c.mjs",
     "vite.config.ts.timestamp-1744275978794-f8315339a1f8e.mjs",
     "comments/ГРУППУ ПЕРСОНАЖЕЙ.md",
-    "comments/СЦЕНУ ИГРЫ.md",
     "comments/ЗМЕЙКА.md",
     "comments/АНИМИРОВАТЬ.md",
-    "comments/ГЛАВНЫМ КОМПОНЕНТОМ.md",
     "comments/холст.md",
-    "comments/ГЛАВНЫЙ ФАЙЛ.md",
     "comments/параметры стартового уровня.md",
-    "comments/стартовый файл.md",
-    "COMMENTS.md",
     "comments/`Snake`.md",
-    "comments/условия завершения игры.md",
     "comments/управления камерой.md",
     "comments/текущем уровне игры.md",
     "comments/разрешение на запуск.md",
@@ -193,11 +211,8 @@
     "comments/ГОЛОВЫ.md",
     "comments/`Scene`.md",
     "comments/сцена.md",
-    "comments/`Game`.md",
     "comments/компонент меню.md",
     "comments/`Main`.md",
-    "comments/компонента-оболочки.md",
-    "comments/отладочная панель.md",
     "src/components/Snake.tsx",
     "src/components/Snake1.tsx",
     "vite.config.ts.timestamp-1743613956228-5c153496d573c.mjs",
@@ -206,7 +221,6 @@
     "comments",
     "Новая папка",
     "out/index.html",
-    "out/styles/prettify-tomorrow.css",
     "out/fonts/OpenSans-Regular-webfont.svg",
     "out/fonts/OpenSans-LightItalic-webfont.svg",
     "out/fonts/OpenSans-Light-webfont.svg",
