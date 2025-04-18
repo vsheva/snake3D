@@ -1,8 +1,8 @@
 /**
  * @module snake.ts Управляет змейкой
- *    @var snakeHead Параметры головы змейки
+ *    @var snakeHead Параметры головы змейки (координаты и направление движения)
  *    @var snakeBody Координаты тела змейки
- *    @var previousSnake Координаты тела змейки на предыдущем шаге
+ *    @var previousSnake Координаты тела змейки на предыдущем рендере
  *    @function setSnakeHeadParams Устанавливает параметры головы змейки
  *    @function setSnakeBodyCoord Устанавливает координаты тела змейки
  *    @function addSnakeBodyCoord Добавляет звено в тело змейки
@@ -29,6 +29,9 @@ let previousSnakeBody: SNAKE.SnakeBodyCoord = []
  */
 export function setSnakeHeadParams(snake: SNAKE.SnakeHeadCoord): void {
   snakeHead = Object.assign({}, snake)
+  // snakeBody.shift()
+  // snakeBody.unshift([snake.snakeHeadCoordX, snake.snakeHeadCoordY])
+  // console.log(snakeHead, snakeBody)
 }
 /**
  * Увеличивает тело змейки
@@ -44,7 +47,9 @@ export function addSnakeBodyCoord(link: number[]): void {
 export function setSnakeBodyCoord(body: SNAKE.SnakeBodyCoord): void {
   previousSnakeBody = [...snakeBody]
   snakeBody = [...body]
-  // console.log(previousSnakeBody, snakeBody)
+  // snakeHead.snakeHeadCoordX = body[0][0]
+  // snakeHead.snakeHeadCoordY = body[0][1]
+  // console.log(snakeBody, snakeHead)
 }
 /**
  * Возвращает параметры головы змейки
