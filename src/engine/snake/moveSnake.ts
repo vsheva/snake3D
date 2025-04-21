@@ -25,56 +25,49 @@ import * as SNAKE from './snake'
  */
 function moveSnake(): void {
   const [counterHeadX, counterHeadY] = getCounterHead()
-
-  if (counterHeadX === 0 && counterHeadY === 0) {
-    if (checkTimerWorking()) {
-      let snakeHead = {
-        snakeHeadCoordX: (getField() + 1) / 2 + Math.round(getPositionHead()[0]),
-        snakeHeadCoordY: (getField() + 1) / 2 + Math.round(getPositionHead()[1]),
-        snakeHeadStepX: SNAKE.getSnakeHeadParams().snakeHeadStepX,
-        snakeHeadStepY: SNAKE.getSnakeHeadParams().snakeHeadStepY,
+  if (counterHeadX === 0 && counterHeadY === 0 && checkTimerWorking()) {
+    let snakeHead = {
+      snakeHeadCoordX: (getField() + 1) / 2 + Math.round(getPositionHead()[0]),
+      snakeHeadCoordY: (getField() + 1) / 2 + Math.round(getPositionHead()[1]),
+      snakeHeadStepX: SNAKE.getSnakeHeadParams().snakeHeadStepX,
+      snakeHeadStepY: SNAKE.getSnakeHeadParams().snakeHeadStepY,
+    }
+    const newBodyCoord = [...SNAKE.getSnakeBodyCoord()]
+    let { snakeHeadCoordX, snakeHeadCoordY, snakeHeadStepX, snakeHeadStepY } = snakeHead
+    if (snakeHeadStepX !== 0 || snakeHeadStepY !== 0) {
+      const potentialSnakeHeadCoord = {
+        snakeHeadCoordX: snakeHeadCoordX + snakeHeadStepX,
+        snakeHeadCoordY: snakeHeadCoordY + snakeHeadStepY,
+        snakeHeadStepX: snakeHeadStepX,
+        snakeHeadStepY: snakeHeadStepY,
       }
-      const newBodyCoord = [...SNAKE.getSnakeBodyCoord()]
-      let { snakeHeadCoordX, snakeHeadCoordY, snakeHeadStepX, snakeHeadStepY } = snakeHead
-      if (snakeHeadStepX !== 0 || snakeHeadStepY !== 0) {
-        const potentialSnakeHeadCoord = {
-          snakeHeadCoordX: snakeHeadCoordX + snakeHeadStepX,
-          snakeHeadCoordY: snakeHeadCoordY + snakeHeadStepY,
-          snakeHeadStepX: snakeHeadStepX,
-          snakeHeadStepY: snakeHeadStepY,
+      const nextSnakeHeadCoord = allContactEvents(potentialSnakeHeadCoord)
+      if (
+        nextSnakeHeadCoord.snakeHeadCoordX !== potentialSnakeHeadCoord.snakeHeadCoordX ||
+        nextSnakeHeadCoord.snakeHeadCoordY !== potentialSnakeHeadCoord.snakeHeadCoordY
+      ) {
+        snakeHead = {
+          ...nextSnakeHeadCoord,
+          snakeHeadStepX: 0,
+          snakeHeadStepY: 0,
         }
-        const nextSnakeHeadCoord = allContactEvents(potentialSnakeHeadCoord)
-        if (
-          nextSnakeHeadCoord.snakeHeadCoordX !==
-            potentialSnakeHeadCoord.snakeHeadCoordX ||
-          nextSnakeHeadCoord.snakeHeadCoordY !== potentialSnakeHeadCoord.snakeHeadCoordY
-        ) {
-          snakeHead = {
-            ...nextSnakeHeadCoord,
-            snakeHeadStepX: 0,
-            snakeHeadStepY: 0,
-          }
-          for (let i = newBodyCoord.length - 1; i > 0; i--)
-            newBodyCoord[i] = newBodyCoord[i - 1]
-          newBodyCoord[0] = [snakeHeadCoordX, snakeHeadCoordY]
+        for (let i = newBodyCoord.length - 1; i > 0; i--)
+          newBodyCoord[i] = newBodyCoord[i - 1]
+        newBodyCoord[0] = [snakeHeadCoordX, snakeHeadCoordY]
 
-          SNAKE.setSnakeBodyCoord(newBodyCoord)
-        }
-        console.log(snakeHead)
-        SNAKE.setSnakeHeadParams(snakeHead)
-        breakContact()
-
-        console.log(newBodyCoord[0], newBodyCoord[1], newBodyCoord[2])
-        if (checkTimerWorking() && !checkMistake()) {
-          console.log('move')
-
-          for (let i = newBodyCoord.length - 1; i > 0; i--)
-            newBodyCoord[i] = newBodyCoord[i - 1]
-          newBodyCoord[0] = [snakeHeadCoordX, snakeHeadCoordY]
-
-          SNAKE.setSnakeBodyCoord(newBodyCoord)
-        } else startTimer()
+        SNAKE.setSnakeBodyCoord(newBodyCoord)
       }
+
+      SNAKE.setSnakeHeadParams(snakeHead)
+      breakContact()
+
+      if (checkTimerWorking() && !checkMistake()) {
+        for (let i = newBodyCoord.length - 1; i > 0; i--)
+          newBodyCoord[i] = newBodyCoord[i - 1]
+        newBodyCoord[0] = [snakeHeadCoordX, snakeHeadCoordY]
+
+        SNAKE.setSnakeBodyCoord(newBodyCoord)
+      } else startTimer()
     }
   }
 }
